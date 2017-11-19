@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+	<ui:composition template="plantillaLogin.xhtml">
+		
+		<ui:define name="cuerpoLogin">
+			
+				<!-- 
+				<p:panelGrid  border="1" style="margin: 0 auto;">
+					<p:row>
+						<p:column colspan="20">
+							<p:outputPanel id="photoLogo">
+		              			<p:graphicImage name="logo/logo5.jpg" style="high:100;" /> 
+		            
+		        				</p:outputPanel>
+						</p:column>
+					</p:row>
+				</p:panelGrid>
+		 		-->	
+	        <div class="form-group">
+	            
+	            <p:inputText styleClass="form-control" placeholder="Usuario" id="user"  />
+	        </div>
+	        <div class="form-group">
+	            
+	            <p:inputText styleClass="form-control" placeholder="Contraseña" id="user"  />
+	        </div>
+	        		<p:commandButton value="Iniciar Sesion" styleClass="btn btn-lg btn-success btn-block"/>
+		</ui:define>
+	</ui:composition>
+</html>
