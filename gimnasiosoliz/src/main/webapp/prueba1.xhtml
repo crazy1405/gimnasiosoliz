@@ -1,0 +1,203 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+	<ui:composition template="plantillaBlanco.xhtml">
+		<ui:define name="menu">
+			
+                    
+           <li>
+               <a href="index.html" class="active"><i class="fa fa-dashboard fa-fw"></i> HOME</a>
+           </li>
+           <li>
+               <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> SOCIOS<span class="fa arrow"></span></a>
+               <ul class="nav nav-second-level collapse">
+                   <li>
+                      <a><p:commandButton value="Nuevo Socio" styleClass="btn btn-outline btn-primary" ></p:commandButton></a>
+                   </li>
+                   <li>
+                       <a><p:commandButton value="Ficha" styleClass="btn btn-outline btn-primary" ></p:commandButton></a>
+                   </li>
+                   <li>
+                        <a><p:commandButton value="Listar Socios" styleClass="btn btn-outline btn-primary" ></p:commandButton></a>
+                   </li>
+               </ul>
+           </li>
+           <li>
+               <a href="tables.html"><i class="fa fa-table fa-fw"></i> Tables</a>
+           </li>
+           <li>
+               <a href="forms.html"><i class="fa fa-edit fa-fw"></i> Forms</a>
+           </li>
+           <li>
+               <a href="#"><i class="fa fa-wrench fa-fw"></i> UI Elements<span class="fa arrow"></span></a>
+               <ul class="nav nav-second-level collapse">
+                   <li>
+                       <a href="panels-wells.html">Panels and Wells</a>
+                   </li>
+                   <li>
+                       <a href="buttons.html">Buttons</a>
+                   </li>
+                   <li>
+                       <a href="notifications.html">Notifications</a>
+                   </li>
+                   <li>
+                       <a href="typography.html">Typography</a>
+                   </li>
+                   <li>
+                       <a href="icons.html"> Icons</a>
+                   </li>
+                   <li>
+                       <a href="grid.html">Grid</a>
+                   </li>
+               </ul>
+               <!-- /.nav-second-level -->
+           </li>
+           <li>
+               <a href="#"><i class="fa fa-sitemap fa-fw"></i> Multi-Level Dropdown<span class="fa arrow"></span></a>
+               <ul class="nav nav-second-level collapse">
+                   <li>
+                       <a href="#">Second Level Item</a>
+                   </li>
+                   <li>
+                       <a href="#">Second Level Item</a>
+                   </li>
+                   <li>
+                       <a href="#">Third Level <span class="fa arrow"></span></a>
+                       <ul class="nav nav-third-level collapse">
+                           <li>
+                               <a href="#">Third Level Item</a>
+                           </li>
+                           <li>
+                               <a href="#">Third Level Item</a>
+                           </li>
+                           <li>
+                               <a href="#">Third Level Item</a>
+                           </li>
+                           <li>
+                               <a href="#">Third Level Item</a>
+                           </li>
+                       </ul>
+                       <!-- /.nav-third-level -->
+                   </li>
+               </ul>
+               <!-- /.nav-second-level -->
+           </li>
+           <li>
+               <a href="#"><i class="fa fa-files-o fa-fw"></i> Sample Pages<span class="fa arrow"></span></a>
+               <ul class="nav nav-second-level collapse">
+                   <li>
+                       <a href="blank.html">Blank Page</a>
+                   </li>
+                   <li>
+                       <a href="login.html">Login Page</a>
+                   </li>
+               </ul>
+               <!-- /.nav-second-level -->
+           </li>
+                    
+		</ui:define>
+	
+		<ui:define name="titulo">
+			<h:outputText value="CONTROL DE INGRESO" />
+		</ui:define>
+		<ui:define name="cuerpo">
+    			<p:password value="#{gimnasioCtrl.cedulaBusqueda}" />
+    			<p:growl id="growlValidarIngreso" showDetail="true" sticky="true" />
+			<p:commandButton value="buscar" id="buscar" update="growlValidarIngreso" ></p:commandButton>
+			<p:panelGrid id="panelInfoSocio" columns="3"  border="1" style="margin: 0 auto;" styleClass="table table-bordered table-striped">
+			
+				
+		
+		    <p:graphicImage name="logo/logo5.jpg" style="high:100;" /> 
+		            
+		        				
+			
+			<p:panelGrid>
+				<p:row>
+					<p:column colspan="4">
+						<b><h:outputText  style="font-size: 30px;"></h:outputText></b>
+					</p:column>
+				</p:row>
+				<p:row>
+					<p:column width="100"><b>Fecha Vencimiento</b></p:column>
+					<p:column colspan="2">
+						<h:outputText value="#{gimnasioCtrl.inscripcion.fechaVence}" width="100">
+						
+						</h:outputText>
+					</p:column>
+					<p:column></p:column>
+					
+				</p:row>
+				<p:row >
+					<p:column colspan="4">
+						<b><h:outputText  style="text-align:center;font-size:26px; margin:12px; color:#{gimnasioCtrl.colorAdvertencia};"></h:outputText></b>
+					</p:column>
+				</p:row>
+				<p:row>
+					<p:column><b>Días restantes</b></p:column>
+					<p:column>
+						<b><h:outputText  style="color:#{gimnasioCtrl.colorAdvertencia};font-size: 18px;"></h:outputText></b>
+					</p:column>
+					<p:column></p:column>
+					<p:column></p:column>
+					
+				</p:row>
+				<p:row>
+					<p:column>
+						<b>Saldo Pendiente</b>
+					</p:column>
+					<p:column>
+					<h:outputText  style="font-size: 18px;color:#FF0000" ></h:outputText>
+					
+					</p:column>
+					<p:column></p:column>
+					<p:column></p:column>
+				</p:row>
+				<p:row>
+					<p:column><b>Peso Actual</b></p:column>
+					<p:column>
+						<h:outputText ></h:outputText>
+					</p:column>
+					<p:column><b>LIBRAS</b></p:column>
+					<p:column></p:column>
+					
+				</p:row>
+				<p:row>
+					<p:column><b>INDICE DE MASA CORPORAL</b></p:column>
+					<p:column>
+						<h:outputText ></h:outputText>
+					</p:column>
+					<p:column>
+						<h:outputText ></h:outputText>
+					</p:column>
+					<p:column></p:column>
+				</p:row>
+				<p:row>
+					<p:column><b><h:outputText value="Altura"></h:outputText></b></p:column>
+					<p:column>
+						<h:outputText ></h:outputText>
+					</p:column>
+					<p:column><b>CM</b></p:column>
+					<p:column></p:column>
+					<p:column></p:column>
+				</p:row>
+				
+				
+				
+			</p:panelGrid>
+			<!-- <p:panel>
+				<p:media value="/resources/demo/images/video/m2.mp4" width="400" height="400" player="quicktime">
+					<f:param name="autoStart" value="false" ></f:param>
+				</p:media>
+			</p:panel>
+         -->
+        
+		</p:panelGrid>
+		
+		</ui:define>
+	</ui:composition>
+</html>
