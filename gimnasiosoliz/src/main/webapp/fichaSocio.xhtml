@@ -1,0 +1,174 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+	<ui:composition template="plantillaBlanco.xhtml">
+		<ui:define name="menu">
+			
+                    
+           <li>
+               <a href="index.html" class="active"><i class="fa fa-dashboard fa-fw"></i> HOME</a>
+           </li>
+           <li>
+               <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> SOCIOS<span class="fa arrow"></span></a>
+               <ul class="nav nav-second-level collapse">
+                   <li>
+                      <a><p:commandButton value="Nuevo Socio" styleClass="btn btn-outline btn-primary" ></p:commandButton></a>
+                   </li>
+                   <li>
+                       <a><p:commandButton value="Ficha" styleClass="btn btn-outline btn-primary" ></p:commandButton></a>
+                   </li>
+                   <li>
+                        <a><p:commandButton value="Listar Socios" styleClass="btn btn-outline btn-primary" ></p:commandButton></a>
+                   </li>
+               </ul>
+           </li>
+           <li>
+               <a href="tables.html"><i class="fa fa-table fa-fw"></i> Tables</a>
+           </li>
+           <li>
+               <a href="forms.html"><i class="fa fa-edit fa-fw"></i> Forms</a>
+           </li>
+           <li>
+               <a href="#"><i class="fa fa-wrench fa-fw"></i> UI Elements<span class="fa arrow"></span></a>
+               <ul class="nav nav-second-level collapse">
+                   <li>
+                       <a href="panels-wells.html">Panels and Wells</a>
+                   </li>
+                   <li>
+                       <a href="buttons.html">Buttons</a>
+                   </li>
+                   <li>
+                       <a href="notifications.html">Notifications</a>
+                   </li>
+                   <li>
+                       <a href="typography.html">Typography</a>
+                   </li>
+                   <li>
+                       <a href="icons.html"> Icons</a>
+                   </li>
+                   <li>
+                       <a href="grid.html">Grid</a>
+                   </li>
+               </ul>
+               <!-- /.nav-second-level -->
+           </li>
+                    
+		</ui:define>
+	
+		<ui:define name="titulo">
+			<h:outputText value="FICHA SOCIO" />
+		</ui:define>
+		<ui:define name="cuerpo">
+    			<p:panel>
+		<f:facet name="header">
+        		FICHA SOCIO
+    		</f:facet>		
+		<p:panelGrid columns="3" border="1" style="margin: 0 auto;">
+			
+				
+			<p:graphicImage id="image4" name="demo/images/photocam/#{gimnasioCtrl.cliente.cedula}.jpeg" width="300"></p:graphicImage>
+	
+			<p:panelGrid>
+				<p:row>
+					<p:column colspan="2">
+						<b><h:outputText value="#{gimnasioCtrl.cliente.nombre} #{gimnasioCtrl.cliente.apellido}" style="text-align:center;margin:40px;font-size: 30px;"></h:outputText></b>
+					</p:column>
+				</p:row>
+				<p:row>
+					<p:column width="100"><b>CÉDULA</b></p:column>
+					<p:column>
+						<h:outputText value="#{gimnasioCtrl.cliente.cedula}" width="100"></h:outputText>
+					</p:column>
+				</p:row>
+				
+				<p:row>
+					<p:column><b>EDAD</b></p:column>
+					<p:column>
+						<h:outputText value="#{gimnasioCtrl.cliente.edad}" width="100"></h:outputText>
+					</p:column>
+				</p:row>
+				<p:row>
+					<p:column><b>FECHA NACIMIENTO</b></p:column>
+					<p:column>
+						<h:outputText value="#{gimnasioCtrl.cliente.fechaNacimiento}" width="100">
+							<f:convertDateTime 
+								/>
+						</h:outputText>
+					</p:column>
+				</p:row>
+				<p:row>
+					<p:column><b>DOMICILIO</b></p:column>
+					<p:column>
+						<h:outputText value="#{gimnasioCtrl.cliente.direccion}" width="100"></h:outputText>
+					</p:column>
+				</p:row>
+				<p:row>
+					<p:column><b>TELÉFONO</b></p:column>
+					<p:column>
+						<h:outputText value="#{gimnasioCtrl.cliente.telefono}" width="100"></h:outputText>
+					</p:column>
+				</p:row>
+				<p:row>
+					<p:column><b>MAIL</b></p:column>
+					<p:column>
+						<h:outputText value="#{gimnasioCtrl.cliente.email}" width="100"></h:outputText>
+					</p:column>
+				</p:row>
+				<p:row>
+					<p:column><b>OBSERVACIONES</b></p:column>
+				</p:row>
+				<p:row>
+					<p:column colspan="2">
+						<h:inputTextarea value="#{gimnasioCtrl.cliente.observaciones}"></h:inputTextarea>
+					</p:column>
+				</p:row>
+				<p:row>
+					<p:column>
+						<p:commandButton icon="fa fa-dollar" oncomplete="PF('deuda').show();"></p:commandButton>
+					</p:column>
+				</p:row>
+			</p:panelGrid>
+			
+		</p:panelGrid>
+		</p:panel>
+		<p:panel>
+			<p:row>
+					<p:column colspan="3">
+						<p:dataTable id="listadoPersonas"
+							 widgetVar="listadoActividades"
+							resizableColumns="true" liveResize="true"
+							emptyMessage="No se han encontrado registros..."
+							value="" var="item">
+							<f:facet name="Detalle Actividades"></f:facet>
+							
+							<p:column headerText="Actividades" style="width:30%;">
+								<h:outputText  />
+							</p:column>
+							<p:column headerText="Vencimiento" style="width:10%;">
+								<h:outputText  />
+							</p:column>
+							<p:column headerText="Ver" style="width:10%;">
+								<p:commandButton  icon="fa fa-search" type="button"/>
+							</p:column>
+							<p:column headerText="Editar" style="width:30%;">
+								<p:commandButton  icon="fa fa-edit" type="button"/>
+							</p:column>
+							<p:column headerText="Cambiar" style="width:30%;">
+								<p:commandButton  icon="fa fa-refresh" type="button"/>
+							</p:column>
+						</p:dataTable>
+					</p:column>
+				</p:row>
+				<p:row>
+					<p:column>
+						<p:commandButton actionListener="#{gimnasioCtrl.doIrLectorBarra}" value="regresar" icon="fa fa-backward"></p:commandButton>
+					</p:column>
+				</p:row>
+		</p:panel>
+		</ui:define>
+	</ui:composition>
+</html>
