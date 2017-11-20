@@ -1,19 +1,47 @@
 package jorge.gimnasiosoliz.model;
 
+import java.util.Date;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
+@Table(name="persona")
 public class Persona {
 	@Id
+	@Column(name="per_cedula", length=10)
 	private String cedula;
+	
+	@Column(name="per_nombre", length=30)
 	private String nombre;
+	
+	@Column(name="per_apellido", length=30)
 	private String apellido;
+	
+	@Column(name="per_telefono", length=30)
 	private String telefono;
+	
+	@Column(name="per_direccion", length=30)
 	private String direccion;
+	
+	@Column(name="per_email", length=30)
 	private String email;
+	
+	@Column(name="per_celular", length=30)
+	private String celular;
+	
+	@Column(name="per_sexo", length=30)
 	private String sexo;
-	private String fechaNacimiento;
+	
+	@Temporal(TemporalType.DATE)
+	@Column(name="per_fecha_nacimiento")
+	private Date fechaNacimiento;
+	
+	@Column(name="per_login_id", length=30)
 	private String loginId;
 	
 	public String getCedula() {
@@ -58,24 +86,32 @@ public class Persona {
 	public void setSexo(String sexo) {
 		this.sexo = sexo;
 	}
-	public String getFechaNacimiento() {
-		return fechaNacimiento;
-	}
-	public void setFechaNacimiento(String fechaNacimiento) {
-		this.fechaNacimiento = fechaNacimiento;
-	}
 	public String getLoginId() {
 		return loginId;
 	}
 	public void setLoginId(String loginId) {
 		this.loginId = loginId;
 	}
+	public String getCelular() {
+		return celular;
+	}
+	public void setCelular(String celular) {
+		this.celular = celular;
+	}
 	@Override
 	public String toString() {
 		return "Persona [cedula=" + cedula + ", nombre=" + nombre + ", apellido=" + apellido + ", telefono=" + telefono
-				+ ", direccion=" + direccion + ", email=" + email + ", sexo=" + sexo + ", fechaNacimiento="
-				+ fechaNacimiento + ", loginId=" + loginId + "]";
+				+ ", direccion=" + direccion + ", email=" + email + ", celular=" + celular + ", sexo=" + sexo
+				+ ", fechaNacimiento=" + fechaNacimiento + ", loginId=" + loginId + "]";
 	}
+	public Date getFechaNacimiento() {
+		return fechaNacimiento;
+	}
+	public void setFechaNacimiento(Date fechaNacimiento) {
+		this.fechaNacimiento = fechaNacimiento;
+	}
+	
+	
 	
 	
 
