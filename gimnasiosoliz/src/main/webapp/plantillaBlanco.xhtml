@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="es" xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html">
+      xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html" xmlns:p="http://primefaces.org/ui">
 
-<head>
+<h:head>
 
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -31,9 +31,9 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-</head>
+</h:head>
 
-<body>
+<h:body>
 
     <div id="wrapper">
 
@@ -293,8 +293,9 @@
                         <div class="panel-body">
                        	<h:form>
                            <ui:insert name="cuerpo">
-                           
+                           			
                            </ui:insert>
+                           	<p:calendar id="effect" value="#{calendarView.date8}" effect="fold" />
                         </h:form>
                         </div>
                         <div class="panel-footer">
@@ -317,7 +318,7 @@
     <!-- /#wrapper -->
 
     <!-- jQuery -->
-    <script src="plantillaGimnasio/vendor/jquery/jquery.min.js"></script>
+    <script src="/vendor/jquery/jquery.min.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
     <script src="plantillaGimnasio/vendor/bootstrap/js/bootstrap.min.js"></script>
@@ -328,6 +329,6 @@
     <!-- Custom Theme JavaScript -->
     <script src="plantillaGimnasio/dist/js/sb-admin-2.js"></script>
 
-</body>
+</h:body>
 
 </html>
