@@ -1,17 +1,22 @@
 package jorge.gimnasiosoliz.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
 @Table(name="persona")
-public class Persona {
+public class Persona implements Serializable{
 	@Id
 	@Column(name="per_cedula", length=10)
 	private String cedula;
@@ -41,8 +46,13 @@ public class Persona {
 	@Column(name="per_fecha_nacimiento")
 	private Date fechaNacimiento;
 	
-	@Column(name="per_login_id", length=30)
-	private String loginId;
+	@OneToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="per_cli_id")
+	private Cliente cliente;
+	
+	@ManyToOne
+	@JoinColumn(name="per_login_id")
+	private Login login;
 	
 	public String getCedula() {
 		return cedula;
@@ -86,12 +96,7 @@ public class Persona {
 	public void setSexo(String sexo) {
 		this.sexo = sexo;
 	}
-	public String getLoginId() {
-		return loginId;
-	}
-	public void setLoginId(String loginId) {
-		this.loginId = loginId;
-	}
+
 	public String getCelular() {
 		return celular;
 	}
@@ -102,13 +107,25 @@ public class Persona {
 	public String toString() {
 		return "Persona [cedula=" + cedula + ", nombre=" + nombre + ", apellido=" + apellido + ", telefono=" + telefono
 				+ ", direccion=" + direccion + ", email=" + email + ", celular=" + celular + ", sexo=" + sexo
-				+ ", fechaNacimiento=" + fechaNacimiento + ", loginId=" + loginId + "]";
+				+ ", fechaNacimiento=" + fechaNacimiento+ "]";
 	}
 	public Date getFechaNacimiento() {
 		return fechaNacimiento;
 	}
 	public void setFechaNacimiento(Date fechaNacimiento) {
 		this.fechaNacimiento = fechaNacimiento;
+	}
+	public Cliente getCliente() {
+		return cliente;
+	}
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
+	}
+	public Login getLogin() {
+		return login;
+	}
+	public void setLogin(Login login) {
+		this.login = login;
 	}
 	
 	

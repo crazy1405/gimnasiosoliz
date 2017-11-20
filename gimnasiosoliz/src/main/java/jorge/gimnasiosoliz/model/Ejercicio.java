@@ -1,20 +1,27 @@
 package jorge.gimnasiosoliz.model;
 
+import java.io.Serializable;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="ejercicio")
-public class Ejercicio {
+public class Ejercicio implements Serializable{
 	@Id
 	@Column(name="ejer_id", length=10)
 	private Integer id;
 	
 	@Column(name="ejer_descripcion", length=300)
 	private String descripcion;
-
+	
+	@OneToMany(mappedBy="ejercicio")
+	private List<PlanEjercicio> planEjercicio;
+	
 	public Integer getId() {
 		return id;
 	}
@@ -30,6 +37,16 @@ public class Ejercicio {
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
+
+	public List<PlanEjercicio> getPlanEjercicio() {
+		return planEjercicio;
+	}
+
+	public void setPlanEjercicio(List<PlanEjercicio> planEjercicio) {
+		this.planEjercicio = planEjercicio;
+	}
+	
+	
 
 	
 }
