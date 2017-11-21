@@ -7,7 +7,8 @@ import javax.persistence.EntityManager;
 import jorge.gimnasiosoliz.model.Persona;
 
 @Stateless
-public class PersonaDAO {
+public class PersonaDAO
+{
 	@Inject
 	private EntityManager em;
 	
