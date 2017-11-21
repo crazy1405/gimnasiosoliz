@@ -1,6 +1,5 @@
 package jorge.gimnasiosoliz.model;
 
-import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -12,7 +11,8 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="inscripcion_cliente")
-public class InscripcionCliente implements Serializable{
+public class InscripcionCliente
+{
 	@Id
 	@Column(name="inCli_id")
 	private Integer id;
