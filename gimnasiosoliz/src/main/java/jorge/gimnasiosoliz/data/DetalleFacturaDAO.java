@@ -22,9 +22,15 @@ public class DetalleFacturaDAO
 		em.merge(detalleFactura);
 	}
 	
-	public void leer(int det_fac_id)
+	public DetalleFactura leer(int det_fac_id)
 	{
 		em.find(DetalleFactura.class, det_fac_id);
+		return null;
+	}
+	
+	public void borrar(int det_fac_id)
+	{
+		em.remove(leer(det_fac_id));
 	}
 	
 }
