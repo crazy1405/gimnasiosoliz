@@ -4,7 +4,7 @@ import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 
-import jorge.gimnasiosoliz.model.Categoria;
+
 import jorge.gimnasiosoliz.model.Cliente;
 
 @Stateless
