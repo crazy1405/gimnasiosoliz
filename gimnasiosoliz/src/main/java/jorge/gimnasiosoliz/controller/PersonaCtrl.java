@@ -3,13 +3,13 @@ package jorge.gimnasiosoliz.controller;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.inject.Inject;
-import javax.persistence.Table;
 
 import jorge.gimnasiosoliz.data.PersonaDAO;
 import jorge.gimnasiosoliz.model.Persona;
 
 @ManagedBean
-public class PersonaCtrl {
+public class PersonaCtrl 
+{
 	private Persona persona;
 	
 	@Inject
