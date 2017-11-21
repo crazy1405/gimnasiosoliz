@@ -10,10 +10,28 @@ import jorge.gimnasiosoliz.model.Persona;
 public class PersonaDAO
 {
 	@Inject
+	//Gestor de Entidades - conexion JPA
 	private EntityManager em;
 	
-	public void insertar(Persona persona) {
+	public void insertar(Persona persona)
+	{
 		em.persist(persona);
+	}
+	
+	public void actualizar(Persona persona)
+	{
+		em.merge(persona);
+	}
+	
+	public void borrar(String cedula)
+	{
+		em.remove(leer(cedula));
+	}
+	
+	public Persona leer(String cedula)
+	{
+		em.find(Persona.class, cedula);
+		return null;
 	}
 
 }
