@@ -10,6 +10,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.validation.constraints.Digits;
 
 @Entity
 @Table(name="detalle_factura")
@@ -22,6 +23,7 @@ public class DetalleFactura implements Serializable{
 	@Column(name="dfac_cantidad", length=5)
 	private Integer cantidad;
 	
+	//@Digits(integer=5, fraction=2)
 	@Column(name="dfac_precioUnitario", length=5)
 	private BigDecimal precioUnitario;
 	
