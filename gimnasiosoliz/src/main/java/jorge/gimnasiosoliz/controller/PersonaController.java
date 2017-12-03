@@ -1,5 +1,7 @@
 package jorge.gimnasiosoliz.controller;
 
+import java.util.List;
+
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -10,10 +12,10 @@ import jorge.gimnasiosoliz.model.Cliente;
 import jorge.gimnasiosoliz.util.ValidarCedula;
 
 @ManagedBean
-@SessionScoped
 public class PersonaController 
 {
 	private Cliente cliente;
+	private List<Cliente> clientes;
 	private ValidarCedula validarCedula;
 	
 	@Inject
@@ -24,6 +26,7 @@ public class PersonaController
 	{
 		cliente = new Cliente();
 		validarCedula = new ValidarCedula();
+		loadPersonas();
 	}
 	
 	public String guardarPersona()
@@ -32,7 +35,18 @@ public class PersonaController
 		System.out.println(cliente);
 		clienteDAO.insertar(cliente);
 		
-		return "lectorBarra.xhtml";
+		return null;
+	}
+	
+	private void loadPersonas()
+	{
+		clientes = clienteDAO.listaClientes();
+		
+	}
+	
+	public String actualizarPersona() {
+		
+		return null;
 	}
 	
 	public String validarCedula(String cedula) {
@@ -60,7 +74,15 @@ public class PersonaController
 		this.clienteDAO = clienteDAO;
 	}
 
+	public List<Cliente> getClientes() {
+		return clientes;
+	}
 
+	public void setClientes(List<Cliente> clientes) {
+		this.clientes = clientes;
+	}
+
+	
 
 	
 

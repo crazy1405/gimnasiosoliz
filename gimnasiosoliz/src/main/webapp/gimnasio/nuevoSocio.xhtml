@@ -29,7 +29,7 @@
 					</p:column>
 					<p:growl id="growlValidarCedula" showDetail="true" sticky="true" />
 					<p:column>
-						<p:commandButton value="validar" actionListener="#{personaController.validarCedula(personaController.cliente.cedula)}" update="growlValidarCedula,@form"></p:commandButton>
+						<p:commandButton value="validar" actionListener="#{personaController.validarCedula(personaController.cliente.cedula)}" update="mensajes"></p:commandButton>
 					</p:column>
 				</p:row>
 				<p:row>
@@ -152,7 +152,7 @@
 					<p:column colspan="2"></p:column>
 					<p:growl id="growl" showDetail="true" sticky="true" />  
 					<p:column>
-						<p:commandButton value="Guardar" action="#{personaController.guardarPersona()}" update="growl"></p:commandButton>
+						<p:commandButton value="Guardar" action="#{personaController.guardarPersona()}" update="mensajes"></p:commandButton>
 					</p:column>
 					
 				</p:row>

@@ -15,19 +15,19 @@
 	        <p:submenu label="Inicio" icon="fa fa-home">
 	        </p:submenu>
 	        <p:submenu label="Socio" icon="fa fa-user">
-	        	<p:menuitem value="Nuevo" actionListener="#{gimnasioCtrl.doIrIngresarCliente}" ></p:menuitem>
-				<p:menuitem value="Ver Ficha" actionListener="#{gimnasioCtrl.doIrFichaSocio}">
-					<f:param name="keyRecupera" value="#{gimnasioCtrl.cliente.cedula}" />
+	        	<p:menuitem value="Nuevo" action="#{gimnasioCtrl.doIrIngresarCliente}" ></p:menuitem>
+				<p:menuitem value="Ver Ficha" action="#{gimnasioCtrl.doIrFichaSocio}">
+					<f:param name="keyRecupera" />
 				</p:menuitem>
 				<p:menuitem value="Listar Socios" oncomplete="PF('sociosLst').show();"></p:menuitem>
 	        </p:submenu>
 	        
 	         <p:submenu label="Actividades" icon="fa fa-soccer-ball-o">
 	        	<p:menuitem value="Nuevo" ></p:menuitem>
-				<p:menuitem value="Ver todos" actionListener="#{gimnasioCtrl.doIrActividades}"></p:menuitem>
+				<p:menuitem value="Ver todos" action="#{gimnasioCtrl.doIrActividades}"></p:menuitem>
 	        </p:submenu> 
 	        <p:submenu label="Instructores" icon="fa fa-street-view">
-	        	<p:menuitem value="Nuevo" actionListener="#{gimnasioCtrl.doIrIngresarInstrutor}"></p:menuitem>
+	        	<p:menuitem value="Nuevo" action="#{gimnasioCtrl.doIrIngresarInstrutor}"></p:menuitem>
 				<p:menuitem value="Ver Todos" ></p:menuitem>
 				<p:menuitem value="Asistencias" ></p:menuitem>
 	        </p:submenu>
@@ -38,7 +38,7 @@
 	        
 	        </p:submenu>
 	        <p:submenu label="Salir" icon="fa fa-lock">
-	        	<p:menuitem value="Cerrar Sesión #{gimnasioCtrl.usuario.nombre}" actionListener="#{gimnasioCtrl.doSalir}"></p:menuitem>
+	        	<p:menuitem value="Cerrar Sesión #{gimnasioCtrl.usuario.nombre}" action="#{gimnasioCtrl.doSalir}"></p:menuitem>
 	        </p:submenu>
 	    </p:menubar>
 		
@@ -48,9 +48,8 @@
 		<f:facet name="header">
         		CONTROL DE INGRESO
     	</f:facet>
-    	<p:password value="#{gimnasioCtrl.cedulaBusqueda}" />
-    	<p:growl id="growlValidarIngreso" showDetail="true" sticky="true" />
-    	<p:commandButton value="buscar" action="#{gimnasioCtrl.limpiarRegistro}" id="buscar" update="controlAcceso, growlValidarIngreso"></p:commandButton>
+    	<p:password value="#{controlAccesoController.cedulaBusqueda}" />
+    	<p:commandButton value="buscar" action="#{gimnasioCtrl.limpiarRegistro}" id="buscar" ></p:commandButton>
     	<p:clock pattern="HH:mm:ss dd-MM-yyyy" mode="server" />
 		<p:panelGrid id="panelInfoSocio" columns="3"  border="1" style="margin: 0 auto;">
 			
