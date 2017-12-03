@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:composite="http://java.sun.com/jsf/composite"
+	xmlns:p="http://primefaces.org/ui">
+
+<composite:interface>
+	<composite:attribute name="beanAct" required="true" />
+	<composite:attribute name="titulo" required="false" />
+</composite:interface>
+<composite:implementation>
+	<h:panelGrid columns="50">
+		<p:commandButton value="Nuevo" action="#{cc.attrs.beanAct.doNuevo}"
+			update="@form" />
+
+		<p:commandButton value="Graba" action="#{cc.attrs.beanAct.doGrabar}"
+			update="@form" />
+
+		<p:commandButton value="Procesa"
+			action="#{cc.attrs.beanAct.doProcesa}" update="@form" />
+
+		<p:commandButton value="Imprime"
+			oncomplete="window.open('#{request.contextPath}/imprime')"
+			action="#{cc.attrs.beanAct.doImprime}" update="@form" />
+
+		<composite:insertChildren />
+
+		<h:outputText value="[#{cc.attrs.titulo}]" />
+	</h:panelGrid>
+</composite:implementation>
+</html>
+
+

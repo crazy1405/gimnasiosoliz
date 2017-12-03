@@ -1,0 +1,86 @@
+.sigmaTablaTransparente, .sigmaTablaTransparente  td,
+	.sigmaTablaTransparente tr {
+	border: 0 !important;
+	background: transparent !important;
+}
+
+.sigmaPanelPeq {
+	margin: 20px !important;
+	padding: 20px !important;
+	width: 400px !important;
+	heigth: 300px !important;
+}
+
+.sigmaBotonBusca, .sigmaBotonNuevo, .sigmaBotonElimina {
+	width: 14px !important;
+	height: 14px !important;
+}
+
+.sigma {
+	width: 98% !important;
+}
+
+.sigmaNumero {
+	width: 98% !important;
+	text-align: right !important;
+}
+
+.sigma1 {
+	width: 100px !important;
+}
+
+.sigmaNumero1 {
+	width: 100px !important;
+	text-align: right !important;
+}
+
+.textoCentro {
+	width: 100px !important;
+	text-align: center !important;
+}
+
+.sigmaCodigo1 {
+	width: 40px !important;
+}
+
+.sigmaDetalle1 {
+	width: 82px !important;
+}
+
+.sigmaEtiqueta1 {
+	width: 100px !important;
+}
+
+.sigma2 {
+	width: 200px !important;
+}
+
+.sigmaNumero2 {
+	width: 200px !important;
+	text-align: right !important;
+}
+
+.sigmaDetalle2 {
+	width: 182px !important;
+}
+
+.sigmaCodigo2 {
+	width: 140px !important;
+}
+
+.sigmaEtiqueta2 {
+	width: 200px !important;
+}
+
+.sigma3 {
+	width: 300px !important;
+}
+
+.sigmaNumero3 {
+	width: 300px !important;
+	text-align: right !important;
+}
+
+.sigmaDetalle3 {
+	width: 382px !important;
+}

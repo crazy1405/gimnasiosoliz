@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:uti="http://java.sun.com/jsf/composite/util"
+	xmlns:composite="http://java.sun.com/jsf/composite">
+
+<composite:interface>s
+	<composite:attribute name="nombre" required="true"
+		type="java.lang.String" />
+	<composite:attribute name="datos" required="true" />
+	<composite:attribute name="ejecuta" required="true"
+		method-signature="java.lang.String action()" />
+</composite:interface>
+
+<composite:implementation>
+	<p:dialog id="#{cc.attrs.nombre}" widgetVar="#{cc.attrs.nombre}"
+		header="#{cc.attrs.datos.cabecera}" modal="true" height="400"
+		width="550">
+		<h:form>
+			<p:dataTable id="#{cc.attrs.nombre}dt"
+				widgetVar="#{cc.attrs.nombre}dt" border="1" resizableColumns="true"
+				scrollable="true" scrollHeight="350" scrollWidth="520"
+				emptyMessage="No se han encontrado registros"
+				value="#{cc.attrs.datos.items}" var="det" lazy="true">
+				<p:column headerText="Codigo" style="width:20px">
+					<h:commandLink value="#{det.codigo}" action="#{cc.attrs.ejecuta}"
+						immediate="true">
+						<f:param name="keyRecupera" value="#{det.codigo}" />
+					</h:commandLink>
+				</p:column>
+				<p:column headerText="Descripcion" style="width:100px">
+					<h:outputText value="#{det.descripcion}" />
+				</p:column>
+			</p:dataTable>
+		</h:form>
+	</p:dialog>
+</composite:implementation>
+</html>

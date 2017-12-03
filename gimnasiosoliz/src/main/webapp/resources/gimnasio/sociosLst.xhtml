@@ -1,0 +1,116 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:uti="http://java.sun.com/jsf/composite/util"
+	xmlns:composite="http://java.sun.com/jsf/composite">
+
+<composite:interface>
+	<composite:attribute name="listaSocios" required="true"
+		type="java.lang.String" />
+</composite:interface>
+
+<composite:implementation>
+	<p:dialog id="#{cc.attrs.nombre}" widgetVar="#{cc.attrs.nombre}"
+		header="LISTADO DE SOCIOS" modal="true"
+		height="#{componente.lista_alto}" width="#{componente.lista_ancho}">
+		<h:form>
+			<p:panel>
+    	<p:panelGrid>
+    		<p:row>
+    			<p:column>Nombre</p:column>
+    			<p:column>
+    				<p:inputText value="#{gimnasioCtrl.busquedaNombreCliente}">
+    					<p:ajax event="keyup" update="listadoPersonas" listener="#{gimnasioCtrl.listarSociosNombre}" />
+    				</p:inputText>
+    			</p:column>
+    			
+    			<p:column>Cedula</p:column>
+    			<p:column>
+    				<p:inputText value="#{gimnasioCtrl.cedulaBusqueda}"></p:inputText>
+    			</p:column>
+				<p:column>
+					<p:commandButton value="Mostrar" actionListener="#{gimnasioCtrl.listarSociosCedula}" update="@form"></p:commandButton>
+				</p:column>
+			</p:row>
+    	</p:panelGrid>			
+		<p:panelGrid>
+				<p:row>
+					<p:column colspan="10">
+						<p:dataTable id="listadoPersonas"
+							styleClass="sigmaTablaSinEspacio" widgetVar="listadoPersonas"
+							resizableColumns="true" liveResize="true"
+							emptyMessage="No se han encontrado registros..."
+							value="#{gimnasioCtrl.clientes}" var="item">
+							<f:facet name="Ver Detalle de los socios"></f:facet>
+							<!--  <p:column headerText="Eliminar" style="width:3%;">
+								<p:commandButton actionListener="#{gimnasioCtrl.eliminarCliente}" icon="fa fa-remove">
+									<f:param name="keyRecupera" value="#{item.codigoPersona}"></f:param>
+								</p:commandButton>
+								
+							</p:column>-->
+							<p:column headerText="Cédula" style="width:15%;">
+								<h:outputText value="#{item.cedula}" />
+							</p:column>
+							<p:column headerText="Nombres" style="width:15%;">
+								<h:outputText value="#{item.nombre}" />
+							</p:column>
+							<p:column headerText="Apellidos" style="width:15%;">
+								<h:outputText value="#{item.apellido}" />
+							</p:column>
+							<p:column headerText="Dirección" style="width:15%;">
+								<h:outputText value="#{item.direccion}" />
+							</p:column>
+							
+							<p:column headerText="Ficha" style="width:6%;">
+								<p:commandButton  icon="fa fa-fax" actionListener="#{gimnasioCtrl.doIrFichaSocio}">
+									<f:param name="keyRecupera" value="#{item.cedula}" />
+								</p:commandButton>
+							</p:column>
+							<p:growl id="growlGenerarTarjetas1" showDetail="true" sticky="true" />
+							<p:column headerText="Tarjeta" style="width:6%;">
+								<p:commandButton  icon="fa fa-cc-mastercard" actionListener="#{reporte.generarReportePorPersona}" update="growlGenerarTarjetas1">
+									<p:effect type="bounce" event="click">
+		            						<f:param name="direction" value="'horizontal'" />
+		       					 	</p:effect>
+									<f:param name="keyRecupera" value="#{item.cedula}" />
+								</p:commandButton>
+							</p:column>
+							<p:column headerText="Descargar" style="width:6%;">
+								<p:commandButton actionListener="#{reportePorPersona.descarga}" ajax="false" update="@form" icon="ui-icon-arrowthick-1-s">
+							        <f:param name="keyRecupera" value="#{item.cedula}" />
+							        <p:fileDownload value="#{reportePorPersona.file}" />
+							    </p:commandButton>
+							</p:column>
+						</p:dataTable>
+					</p:column>
+				</p:row>
+				<p:row>
+				<p:growl id="growlGenerarTarjetas" showDetail="true" sticky="true" />
+					<p:column>
+						<p:commandButton value="Generar tarjetas" action="#{reporte.generarReporte}" update="growlGenerarTarjetas">
+							<p:effect type="bounce" event="click">
+            					<f:param name="direction" value="'horizontal'" />
+       					 	</p:effect>
+						</p:commandButton>
+					</p:column>
+					
+					<p:column>
+						<p:commandButton value="Descargar Tarjetas" ajax="false" onclick="PrimeFaces.monitorDownload(start, stop);" update="growlGenerarTarjetas" icon="ui-icon-arrowthick-1-s">
+					        <p:fileDownload value="#{reporte.file}" />
+					    </p:commandButton>
+					</p:column>
+				</p:row>
+				
+				
+		</p:panelGrid>
+		
+		
+		
+		</p:panel>
+		</h:form>
+	</p:dialog>
+</composite:implementation>
+</html>
+

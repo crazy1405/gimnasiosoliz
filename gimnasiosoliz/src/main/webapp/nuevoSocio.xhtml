@@ -77,8 +77,8 @@
 		</ui:define>
 		
 		<ui:define name="cuerpo">
-    			
-    			
+    			<h:form>
+    			<p:commandButton value="Guardar"  action="#{personaController.guardarPersona()}"></p:commandButton>
     			<p:panelGrid columns="3" border="1" style="margin: 0 auto;"  id="panelGrip1">
     		  	<p:photoCam widgetVar="pc" /> 
 			<p:panelGrid>
@@ -235,7 +235,7 @@
 		</p:panelGrid>		
 	
 			<p:commandButton  value="regresar" icon="fa fa-backward"></p:commandButton>
-    			
+    		</h:form>	
 		</ui:define>
 	</ui:composition>
 </html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:uti="http://java.sun.com/jsf/composite/util"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition
+	template="/WEB-INF/facelets/templates/plantillaGeneral.xhtml">
+
+	<ui:define name="cuerpo">
+	
+	<p:panel>
+		<f:facet name="header">
+        		TELEFONO CELULAR
+    		</f:facet>
+    		<p:panelGrid columns="3" border="1" style="margin: 0 auto;">
+    		  <p:photoCam widgetVar="pc" listener="#{camaraWeb.oncapture}" update="photo"/> 
+			<p:panelGrid>
+				<p:row>
+					<p:column>
+						<p:inputText id="cedula" value="#{camaraWeb.c.cedula}" style="height:50px"></p:inputText>
+					</p:column>
+					<p:growl id="growlValidarCedula" showDetail="true" sticky="true" />
+					
+				</p:row>
+				<p:row>
+					<p:column>
+						<p:commandButton value="validar" style="height:100px; width:110px" action="#{camaraWeb.validarCedula}" update="growlValidarCedula"></p:commandButton>
+					</p:column>
+				</p:row>
+				<p:row>
+					<p:column>
+						
+						<p:commandButton type="button" style="height:100px;" title="Capturar" value="Tomar" onclick="PF('pc').capture()" icon="fa fa-camera-retro" update="photo,growlValidarCedula">
+	      					<p:effect type="bounce" event="click">
+            					<f:param name="direction" value="'horizontal'" />
+       					 	</p:effect>
+	        			</p:commandButton>
+					
+					</p:column>
+				</p:row>
+			</p:panelGrid>
+		<p:outputPanel id="photo">
+              <p:graphicImage name="demo/images/photocam/#{camaraWeb.c.cedula}.jpeg"/> 
+            
+        </p:outputPanel>
+        
+        
+		</p:panelGrid>		
+		<p:commandButton value="BD" action="#{reporte.copiaSeguridadDatos}"></p:commandButton>
+	
+		
+		</p:panel>
+	
+	</ui:define>
+
+
+
+</ui:composition>
+</html>

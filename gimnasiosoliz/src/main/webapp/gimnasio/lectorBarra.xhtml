@@ -1,0 +1,201 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:uti="http://java.sun.com/jsf/composite/util"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:gimnasio="http://java.sun.com/jsf/composite/gimnasio">
+
+<ui:composition
+	template="/WEB-INF/facelets/templates/plantillaGeneral.xhtml">
+	<ui:define name="cuerpo">
+	<p:panel>
+		<p:menubar>
+	        <p:submenu label="Inicio" icon="fa fa-home">
+	        </p:submenu>
+	        <p:submenu label="Socio" icon="fa fa-user">
+	        	<p:menuitem value="Nuevo" actionListener="#{gimnasioCtrl.doIrIngresarCliente}" ></p:menuitem>
+				<p:menuitem value="Ver Ficha" actionListener="#{gimnasioCtrl.doIrFichaSocio}">
+					<f:param name="keyRecupera" value="#{gimnasioCtrl.cliente.cedula}" />
+				</p:menuitem>
+				<p:menuitem value="Listar Socios" oncomplete="PF('sociosLst').show();"></p:menuitem>
+	        </p:submenu>
+	        
+	         <p:submenu label="Actividades" icon="fa fa-soccer-ball-o">
+	        	<p:menuitem value="Nuevo" ></p:menuitem>
+				<p:menuitem value="Ver todos" actionListener="#{gimnasioCtrl.doIrActividades}"></p:menuitem>
+	        </p:submenu> 
+	        <p:submenu label="Instructores" icon="fa fa-street-view">
+	        	<p:menuitem value="Nuevo" actionListener="#{gimnasioCtrl.doIrIngresarInstrutor}"></p:menuitem>
+				<p:menuitem value="Ver Todos" ></p:menuitem>
+				<p:menuitem value="Asistencias" ></p:menuitem>
+	        </p:submenu>
+	        <p:submenu label="Grupos" icon="fa fa-group">
+	        	
+	        </p:submenu> 
+	        <p:submenu label="Cajas" icon="fa fa-money">
+	        
+	        </p:submenu>
+	        <p:submenu label="Salir" icon="fa fa-lock">
+	        	<p:menuitem value="Cerrar Sesión #{gimnasioCtrl.usuario.nombre}" actionListener="#{gimnasioCtrl.doSalir}"></p:menuitem>
+	        </p:submenu>
+	    </p:menubar>
+		
+	</p:panel>
+		<p:panel id="controlAcceso">
+		<p:focus context="controlAcceso"></p:focus>
+		<f:facet name="header">
+        		CONTROL DE INGRESO
+    	</f:facet>
+    	<p:password value="#{gimnasioCtrl.cedulaBusqueda}" />
+    	<p:growl id="growlValidarIngreso" showDetail="true" sticky="true" />
+    	<p:commandButton value="buscar" action="#{gimnasioCtrl.limpiarRegistro}" id="buscar" update="controlAcceso, growlValidarIngreso"></p:commandButton>
+    	<p:clock pattern="HH:mm:ss dd-MM-yyyy" mode="server" />
+		<p:panelGrid id="panelInfoSocio" columns="3"  border="1" style="margin: 0 auto;">
+			
+				
+			<p:graphicImage id="image4" name="demo/images/photocam/#{gimnasioCtrl.cliente.cedula}.jpeg" width="300"></p:graphicImage>
+			
+			<p:panelGrid>
+				<p:row>
+					<p:column colspan="4">
+						<b><h:outputText value="#{gimnasioCtrl.cliente.nombre} #{gimnasioCtrl.cliente.apellido}" style="font-size: 30px;"></h:outputText></b>
+					</p:column>
+				</p:row>
+				<p:row>
+					<p:column width="100"><b>Fecha Vencimiento</b></p:column>
+					<p:column colspan="2">
+						<h:outputText value="#{gimnasioCtrl.inscripcion.fechaVence}" width="100">
+							<f:convertDateTime pattern="#{componente.formatoFecha}"
+								locale="#{componente.formatoUbicacion}" />
+						</h:outputText>
+					</p:column>
+					<p:column></p:column>
+					
+				</p:row>
+				<p:row >
+					<p:column colspan="4">
+						<b><h:outputText value="#{gimnasioCtrl.mensajeAdvertencia}" style="text-align:center;font-size:26px; margin:12px; color:#{gimnasioCtrl.colorAdvertencia};"></h:outputText></b>
+					</p:column>
+				</p:row>
+				<p:row>
+					<p:column><b>Días restantes</b></p:column>
+					<p:column>
+						<b><h:outputText value="#{gimnasioCtrl.inscripcion.diasRestantes}" style="color:#{gimnasioCtrl.colorAdvertencia};font-size: 18px;"></h:outputText></b>
+					</p:column>
+					<p:column></p:column>
+					<p:column></p:column>
+					
+				</p:row>
+				<p:row>
+					<p:column>
+						<b>Saldo Pendiente</b>
+					</p:column>
+					<p:column>
+					<h:outputText value="#{gimnasioCtrl.calculaDeuda}" style="font-size: 18px;color:#FF0000" ></h:outputText>
+					
+					</p:column>
+					<p:column></p:column>
+					<p:column></p:column>
+				</p:row>
+				<p:row>
+					<p:column><b>Peso Actual</b></p:column>
+					<p:column>
+						<h:outputText value="#{gimnasioCtrl.cliente.peso}"></h:outputText>
+					</p:column>
+					<p:column><b>LIBRAS</b></p:column>
+					<p:column></p:column>
+					
+				</p:row>
+				<p:row>
+					<p:column><b>INDICE DE MASA CORPORAL</b></p:column>
+					<p:column>
+						<h:outputText value="#{gimnasioCtrl.pesoRecomendado}"></h:outputText>
+					</p:column>
+					<p:column>
+						<h:outputText value="#{gimnasioCtrl.advertenciaPeso}"></h:outputText>
+					</p:column>
+					<p:column></p:column>
+				</p:row>
+				<p:row>
+					<p:column><b><h:outputText value="Altura"></h:outputText></b></p:column>
+					<p:column>
+						<h:outputText value="#{gimnasioCtrl.cliente.altura}"></h:outputText>
+					</p:column>
+					<p:column><b>CM</b></p:column>
+					<p:column></p:column>
+					<p:column></p:column>
+				</p:row>
+				
+				
+				
+			</p:panelGrid>
+			<!-- <p:panel>
+				<p:media value="/resources/demo/images/video/m2.mp4" width="400" height="400" player="quicktime">
+					<f:param name="autoStart" value="false" ></f:param>
+				</p:media>
+			</p:panel>
+         -->
+        
+		</p:panelGrid>
+		
+		
+		
+		</p:panel>
+		<p:panel>
+			<p:panelGrid>
+		<p:row>
+			<p:column>
+			<p:spacer width="450" height="5" />
+		</p:column>
+		
+		 <p:column>
+			<p:commandButton icon="fa fa-edit"  title="Editar" action="#{gimnasioCtrl.doIrActualizarCliente}"></p:commandButton>
+			<f:param name="keyRecupera" value="#{gimnasioCtrl.cliente.codigoPersona}" />
+		</p:column>
+		<p:column>
+			<p:commandButton icon="fa fa-fax" title="Ficha" actionListener="#{gimnasioCtrl.doIrFichaSocio}">
+			
+			</p:commandButton>
+		</p:column>
+		<p:column>
+			<p:commandButton icon="fa fa-money"  title="Pagar Inscripción" actionListener="#{gimnasioCtrl.doIrActualizarInscripcion}">
+				
+			</p:commandButton>
+			
+		</p:column>
+		
+		
+		</p:row>
+		<p:row>
+			
+			<p:column colspan="3">
+			
+				<p:media value="/resources/demo/images/video/e1.mp4" width="400" height="400" player="quicktime">
+					 <f:param name="autoplay" value="false" ></f:param> 
+				</p:media>
+		
+			</p:column>
+			<p:column colspan="3">
+				<p:graphicImage id="imageReto" name="demo/images/sistema/esm.jpg" width="500"></p:graphicImage>
+			</p:column>
+		</p:row>
+		
+		
+		
+	
+		
+        	
+      	
+		</p:panelGrid>
+		</p:panel>
+	</ui:define>
+	<ui:define name="listas">
+	
+		<gimnasio:sociosLst nombre="sociosLst" />
+		<gimnasio:cobrar nombre="cobrar"/>
+		<gimnasio:deuda nombre="deuda" />
+	</ui:define>
+</ui:composition>
+</html>

@@ -1,0 +1,147 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:uti="http://java.sun.com/jsf/composite/util"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition
+	template="/WEB-INF/facelets/templates/plantillaGeneral.xhtml">
+
+	<ui:define name="cuerpo">
+	
+	
+		<p:panel>
+		<f:facet name="header">
+        		Ingresar Instructor
+    		</f:facet>
+    		<p:panelGrid columns="3" border="1" style="margin: 0 auto;">
+    		  <p:photoCam widgetVar="pc" listener="#{photoCamView.oncapture}" update="photo" /> 
+			<p:panelGrid>
+				<p:row>
+					<p:column></p:column>
+					<p:column>
+						<h:outputText value="Cédula"></h:outputText>
+					</p:column>
+					<p:column>
+						<p:inputText value="#{gimnasioCtrl.cliente.cedula}"></p:inputText>
+					</p:column>
+				</p:row>
+				<p:row>
+					<p:column></p:column>
+					<p:column>
+						<h:outputText value="Nombre"></h:outputText>
+					</p:column>
+					<p:column>
+						<p:inputText value="#{gimnasioCtrl.cliente.nombre}"></p:inputText>
+					</p:column>
+					
+				</p:row>
+				<p:row>
+					<p:column></p:column>
+					<p:column>
+						<h:outputText value="Apellido"></h:outputText>
+					</p:column>
+					<p:column>
+						<p:inputText value="#{gimnasioCtrl.cliente.apellido}"></p:inputText>
+					</p:column>
+				</p:row>
+				<p:row>
+					<p:column></p:column>
+					<p:column>
+						<h:outputText value="Telefono"></h:outputText>
+					</p:column>
+					<p:column>
+						<p:inputText value="#{gimnasioCtrl.cliente.telefono}"></p:inputText>
+					</p:column>
+				</p:row>
+				<p:row>
+					<p:column></p:column>
+					<p:column>
+						<h:outputText value="Dirección"></h:outputText>
+					</p:column>
+					<p:column>
+						<p:inputText value="#{gimnasioCtrl.cliente.direccion}"></p:inputText>
+					</p:column>
+				</p:row>
+					
+				<p:row>
+					<p:column></p:column>
+					<p:column>
+						<h:outputText value="Email"></h:outputText>
+					</p:column>
+					<p:column>
+						<p:inputText value="#{gimnasioCtrl.cliente.email}"></p:inputText>
+					</p:column>
+				</p:row>	
+				<p:row>
+					
+					<p:column></p:column>
+					<p:column >
+						<p:outputLabel for="sexo" value="Sexo" />
+				       
+					</p:column>
+					<p:column>
+						 <p:selectOneMenu id="sexo"  style="width:125px" value="#{gimnasioCtrl.cliente.sexo}">
+				            <f:selectItem itemLabel="Selecciona" itemValue="" />
+				            <f:selectItem itemLabel="Masculino" itemValue="M" />
+				            <f:selectItem itemLabel="Femenino" itemValue="F" />
+				        </p:selectOneMenu>
+					</p:column>
+					
+				</p:row>	
+				<p:row>
+					<p:column></p:column>
+					<p:column>
+						<h:outputText value="Fecha Nacimiento"></h:outputText>
+					</p:column>
+					<p:column>
+						<p:calendar id="fechaInicio"
+									value="#{gimnasioCtrl.cliente.fechaNacimiento}"
+									pattern="#{componente.formatoFecha}" mask="true"
+									styleClass="sigmaFecha" navigator="true" />
+					</p:column>
+				</p:row>	
+				
+				<p:row>
+					<p:column></p:column>
+					<p:column colspan="2">
+						<h:outputText value="Observaciones"></h:outputText>
+					</p:column>
+					
+				</p:row>	
+				<p:row>
+					<p:column></p:column>
+					<p:column colspan="2">
+						<h:inputTextarea value="#{gimnasioCtrl.cliente.observaciones}"></h:inputTextarea>
+					</p:column>
+					
+				</p:row>	
+				
+				<p:row>
+					<p:column colspan="2"></p:column>
+					<p:growl id="growl" showDetail="true" sticky="true" />  
+					<p:column>
+						<p:commandButton value="Guardar" actionListener="#{gimnasioCtrl.ingresarInstructor}" update="growl,@form"></p:commandButton>
+					</p:column>
+					
+				</p:row>
+				
+			</p:panelGrid>
+		<p:outputPanel id="photo">
+              <p:graphicImage name="demo/images/photocam/#{photoCamView.filename}.jpeg" rendered="#{not empty photoCamView.filename}"/> 
+            
+        </p:outputPanel>
+         <p:commandButton type="button" value="Capture" onclick="PF('pc').capture()"/> 
+		</p:panelGrid>		
+		
+	
+		
+		</p:panel>
+	</ui:define>
+
+
+
+</ui:composition>
+</html>

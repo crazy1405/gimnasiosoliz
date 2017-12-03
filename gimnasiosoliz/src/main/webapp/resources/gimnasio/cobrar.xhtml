@@ -1,0 +1,81 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:uti="http://java.sun.com/jsf/composite/util"
+	xmlns:composite="http://java.sun.com/jsf/composite">
+
+<composite:interface>
+	<composite:attribute name="listaSocios" required="true"
+		type="java.lang.String" />
+</composite:interface>
+
+<composite:implementation>
+	<p:dialog id="#{cc.attrs.nombre}" widgetVar="#{cc.attrs.nombre}"
+		header="COBRAR" modal="true"
+		height="#{componente.lista_alto}" width="#{componente.lista_ancho}">
+		<h:form>
+			<p:panel>
+			<p:panelGrid border="1" style="margin: 0 auto;">
+				<!--<p:row>
+					<p:column colspan="3">
+						  <b><h:outputText value="#{gimnasioCtrl.cliente.nombre}-#{gimnasioCtrl.cliente.cedula}" style="text-align:center;margin:40px;font-size: 30px;" /></b>
+					</p:column>
+					
+				</p:row>-->
+				<p:row>
+					<p:column><b>Fecha de Renovación</b>
+					</p:column>
+					<p:column>
+						<p:calendar id="fechaInicio"
+									value="#{gimnasioCtrl.inscripcion.fechaInscripcion}"
+									pattern="#{componente.formatoFecha}" mask="true"
+									styleClass="sigmaFecha" navigator="true" />
+					</p:column>
+				</p:row>
+				<p:row>
+					<p:column><b>Fecha de Vencimiento</b>
+					</p:column>
+					<p:column>
+						<p:calendar id="fechaFin"
+									value="#{gimnasioCtrl.inscripcion.fechaVence}"
+									pattern="#{componente.formatoFecha}" mask="true"
+									styleClass="sigmaFecha" navigator="true" />
+					</p:column>
+				</p:row>
+			</p:panelGrid>
+		</p:panel>
+		<p:panel>
+			<p:panelGrid border="1" style="margin: 0 auto;">
+				<p:row>
+					<p:column><b>Recargo</b></p:column>
+					<p:column>
+						<p:inputText value="#{gimnasioCtrl.saldoInicial}" styleClass="sigmaNumero1"></p:inputText>
+					</p:column>
+				</p:row>
+				<p:row>
+					<p:column><b>Descuento</b></p:column>
+					<p:column>
+						<p:inputText value="#{gimnasioCtrl.inscripcion.descuento}" styleClass="sigmaNumero1"></p:inputText>
+					</p:column>
+				</p:row>
+				<p:row>
+					
+					<p:column>
+						<h:outputText id="saldoPagar" value="#{gimasioCtrl.saldoPagar}" styleClass="sigmaNumero1"></h:outputText>
+					</p:column>
+				</p:row>
+				<p:row>
+				<p:growl id="saldoPagarNoti" showDetail="true" sticky="true" ></p:growl>
+					<p:column>
+						<p:commandButton value="Pagar" action="#{gimnasioCtrl.pagarInscripcion}" update="saldoPagarNoti"></p:commandButton>
+					</p:column>
+				</p:row>
+			</p:panelGrid>
+		</p:panel>
+		</h:form>
+	</p:dialog>
+</composite:implementation>
+</html>
+

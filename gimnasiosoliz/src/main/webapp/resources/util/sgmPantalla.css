@@ -1,0 +1,162 @@
+/* aseguramos quitar el margen para todos los elementos colocando 0 pixeles */
+* {
+	margin: 0px;
+	/*espacio alrededor del elemento, externo*/
+	padding: 0px;
+	/*espacio alrededor del contenido del elemento pero dentro de sus bordes,interno*/
+}
+
+h1 {
+	font: bold 14px verdana, sans-serif;
+}
+
+/*asegurarnos que sean tratados como elementos <div> y de este modo construir nuestro modelo de caja*/
+header, section, footer, aside, nav, article, figure, figcaption, hgroup
+	{
+	display: block;
+}
+
+/*todo lo que se encuentra dentro de <body> ser� centrado en la ventana, centrando de este modo toda la p�gina web*/
+body {
+	text-align: center;
+}
+
+#pantalla {
+	width: 1200px;
+	/*tama�o maximo para el contenido del cuerpo*/
+	margin: 15px auto;
+	/*15 pixeles margen superior e inferior -- autom�tico margen izquierdo y derecho,calculados autom�ticamente de acuerdo al tama�o del cuerpo del documento y el elemento <div>*/
+	text-align: left;
+	/*alineamos nuevamente a la izquierda, el HTML dentro de esta caja*/
+}
+
+/*por defecto ancho del 100% del elemento padre*/
+/*el alto se ajusta al contenido*/
+#cabecera {
+	/* 	background: #FFFBB9; */
+	/*fondo amarillo*/
+	border: 1px solid #999999;
+	/*borde s�lido de 1 pixel y color*/
+	padding: 10px;
+	/*margen interior de 20 pixeles*/
+}
+
+#cuerpo {
+	/*fondo amarillo*/
+	/* 	background: #FFF1A0; */
+	/*borde s�lido de 3 pixel y color*/
+	border: 3px solid #999999;
+	/*margen interior de 20 pixeles*/
+	padding: 20px;
+}
+
+#pie {
+	/*
+both, el cual significa que ambos lados del elemento ser�n
+restaurados y el elemento seguir� el flujo normal (este elemento ya no es flotante como
+los anteriores). Esto, para un elemento block, quiere decir que ser� posicionado debajo del
+�ltimo elemento, en una nueva l�nea.
+*/
+	clear: both;
+	background: #CCCCCC;
+	/*restaura las condiciones normales del �rea ocupada por el elemento,no permiti�ndole posicionarse adyacente a una caja flotante*/
+	text-align: center;
+	padding: 20px;
+	border-top: 2px solid #999999;
+}
+
+article {
+	background: #FFFBCC;
+	border: 1px solid #999999;
+	padding: 20px;
+	margin-bottom: 15px;
+}
+
+article footer {
+	text-align: right;
+}
+
+time {
+	color: #999999;
+}
+
+figcaption {
+	font: italic 14px verdana, sans-serif;
+}
+
+/*Colores de fondo para identificar las acciones*/
+.nuevo {
+	background: #93BBD1;
+}
+
+.actualizado {
+	background: #FFFBB9;
+}
+
+.eliminado {
+	background: #FFBE97;
+}
+
+/*Controles de las grillas*/
+.grdEtiqueta {
+	background: #FFBE97;
+}
+
+.grdTexto {
+	width: 98%;
+	/* 	padding: 1px 1px; */
+}
+
+.grdCombo {
+	width: 98%
+}
+
+/*Controles para los elementos*/
+.sigmaDetalle {
+	width: 300px;
+}
+
+:disabled {
+	background: #dddddd;
+}
+
+/*BARRA DE OPCIONES*/
+.barra-boton {
+	width: 43px;
+	height: 43px;
+	border: 2px solid #999999;
+	background-repeat: no-repeat;
+	background: #FFF1A0;
+}
+
+.barra-titulo {
+	font: bold 20px verdana, sans-serif;
+}
+
+.listado-selecciona {
+	width: 30px;
+	height: 20px;
+}
+
+td {
+	vertical-align: top;
+	border-style: none;
+}
+
+tr {
+	vertical-align: top;
+	border-style: none;
+}
+
+.ui-panelgrid td, .ui-panelgrid tr {
+	border-style: none;
+}
+
+table tbody .ui-widget-content {
+	border: 0 solid #FFFFFF;
+	color: #333333;
+}
+
+.ui-widget-header.sgmSubtitulo {
+	font-weight: normal;
+}

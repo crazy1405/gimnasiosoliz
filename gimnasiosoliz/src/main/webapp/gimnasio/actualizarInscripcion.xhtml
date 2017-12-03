@@ -1,0 +1,135 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:uti="http://java.sun.com/jsf/composite/util"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition
+	template="/WEB-INF/facelets/templates/plantillaGeneral.xhtml">
+
+	<ui:define name="cuerpo">
+		<p:panel>
+			<p:panelGrid border="1" style="margin: 0 auto;">
+				<p:row>
+					<p:column colspan="3">
+						  <b><h:outputText value="#{gimnasioCtrl.cliente.nombre}-#{gimnasioCtrl.cliente.cedula}" style="text-align:center;margin:40px;font-size: 30px;" /></b>
+					</p:column>
+					
+				</p:row>
+				<p:row>
+					<p:column><b>Fecha de Renovación</b>
+					</p:column>
+					<p:column>
+						<p:calendar id="fechaInicio"
+									value="#{gimnasioCtrl.inscripcion.fechaInscripcion}"
+									pattern="#{componente.formatoFecha}" mask="true"
+									styleClass="sigmaFecha" navigator="true"/>
+					</p:column>
+				</p:row>
+				<p:row>
+					<p:column><b>Fecha de Vencimiento</b>
+					</p:column>
+					<p:column>
+						<p:calendar id="fechaFin"
+									value="#{gimnasioCtrl.inscripcion.fechaVence}"
+									pattern="#{componente.formatoFecha}" mask="true"
+									styleClass="sigmaFecha" navigator="true" />
+					</p:column>
+				</p:row>
+			</p:panelGrid>
+		</p:panel>
+		<p:panel>
+			<p:panelGrid border="1" style="margin: 0 auto;">
+				<p:row>
+					<p:column><b>Recargo</b></p:column>
+					<p:column>
+						<p:inputText value="#{gimnasioCtrl.saldoInicial}" styleClass="sigmaNumero1">
+							<p:ajax event="keyup" update="saldoPagar" listener="#{gimnasioCtrl.keyEventTotalPago}" />
+						</p:inputText>
+					</p:column>
+				</p:row>
+				<p:row>
+					<p:column><b>Descuento</b></p:column>
+					<p:column>
+						<p:inputText value="#{gimnasioCtrl.inscripcion.descuento}" styleClass="sigmaNumero1">
+							<p:ajax event="keyup" update="saldoPagar" listener="#{gimnasioCtrl.keyEventTotalPago}" />
+						</p:inputText>
+					</p:column>
+				</p:row>
+				<p:row>
+					<p:column><b>TOTAL</b></p:column>
+					<p:column>
+						<h:outputText id="saldoPagar" value="#{gimnasioCtrl.saldoPagar}" styleClass="sigmaNumero1"></h:outputText>
+					</p:column>
+				</p:row>
+				<p:row>
+				<p:growl id="saldoPagarNoti" showDetail="true" sticky="true" ></p:growl>
+					<p:column>
+						<p:commandButton value="Actualizar Inscripción" action="#{gimnasioCtrl.actualizarInscripcion}" update="saldoPagarNoti, panelListadoInscripciones"></p:commandButton>
+					</p:column>
+					<p:column>
+						<p:commandButton value="Pagar Inscripcion" action="#{gimnasioCtrl.pagarInscripcion}" update="@form"></p:commandButton>
+					</p:column>
+				</p:row>
+			</p:panelGrid>
+		</p:panel>
+		<p:panel id="panelListadoInscripciones">
+			<p:panelGrid>
+				<p:row>
+					<p:column colspan="10">
+						<p:dataTable id="listadoInscripciones"
+							styleClass="sigmaTablaSinEspacio" widgetVar="listadoInscripciones"
+							resizableColumns="true" liveResize="true"
+							emptyMessage="No se han encontrado registros..."
+							value="#{gimnasioCtrl.inscripciones}" var="item">
+							<f:facet name="Ver Detalle de los socios"></f:facet>
+							<!--  <p:column headerText="Eliminar" style="width:3%;">
+								<p:commandButton actionListener="#{gimnasioCtrl.eliminarCliente}" icon="fa fa-remove">
+									<f:param name="keyRecupera" value="#{item.codigoPersona}"></f:param>
+								</p:commandButton>
+								
+							</p:column>-->
+							<p:column headerText="Id" style="width:15%;">
+								<h:outputText value="#{item.id}" />
+							</p:column>
+							<p:column headerText="Fecha Inscripción" style="width:30%;">
+								<h:outputText value="#{item.fechaInscripcion}" >
+									<f:convertDateTime pattern="#{componente.formatoFecha}"
+									timeZone="#{componente.formatoZona}" />
+								</h:outputText>
+							</p:column>
+							<p:column headerText="Fecha Vence" style="width:30%;">
+								<h:outputText value="#{item.fechaVence}" >
+								
+									<f:convertDateTime pattern="#{componente.formatoFecha}"
+									timeZone="#{componente.formatoZona}" />
+								</h:outputText>
+							</p:column>
+							<p:column headerText="Valor total" style="width:30%;">
+								<h:outputText value="#{item.saldo}" />
+							</p:column>
+							<p:column headerText="Descuento" style="width:30%;">
+								<h:outputText value="#{item.descuento}" />
+							</p:column>
+						</p:dataTable>
+					</p:column>
+				</p:row>
+				<p:row>
+					<p:column>
+						<p:commandButton actionListener="#{gimnasioCtrl.doIrLectorBarra}" value="regresar" icon="fa fa-backward"></p:commandButton>
+					</p:column>
+				</p:row>
+				
+				
+				
+		</p:panelGrid>
+		</p:panel>
+		
+	</ui:define>
+
+
+
+</ui:composition>
+</html>

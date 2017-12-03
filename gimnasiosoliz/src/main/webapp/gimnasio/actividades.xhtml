@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:uti="http://java.sun.com/jsf/composite/util"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition
+	template="/WEB-INF/facelets/templates/plantillaGeneral.xhtml">
+
+	<ui:define name="cuerpo">
+	
+		<p:panel>
+		<f:facet name="header">
+        		Actividades
+    		</f:facet>		
+		<p:panelGrid>
+				<p:row>
+					<p:column colspan="10">
+						<p:dataTable id="listadoInstructores"
+							styleClass="sigmaTablaSinEspacio" widgetVar="listadoInstructores"
+							resizableColumns="true" liveResize="true"
+							emptyMessage="No se han encontrado registros..."
+							value="" var="item">
+							<f:facet name="Ver Detalle de las personas"></f:facet>
+							<p:column headerText="Eliminar" style="width:3%;">
+								<p:commandButton  icon="fa fa-remove" type="button"/>
+							</p:column>
+							<p:column headerText="Descripción" style="width:30%;">
+								<h:outputText value="" />
+							</p:column>
+							<p:column headerText="Instructor" style="width:30%;">
+								<h:outputText value="" />
+							</p:column>
+							<p:column headerText="Precio" style="width:5%;">
+								<h:outputText value="" />
+							</p:column>
+							<p:column headerText="Cant. Socios" style="width:5%;">
+								<h:outputText value="" />
+							</p:column>
+							<p:column headerText="Socios" style="width:3%;">
+								<p:commandButton  icon="fa fa-list-alt" type="button"/>
+							</p:column>
+							<p:column headerText="Editar" style="width:3%;">
+								<p:commandButton  icon="fa fa-edit" type="button"/>
+							</p:column>
+						</p:dataTable>
+					</p:column>
+				</p:row>
+				
+		</p:panelGrid>
+		
+		
+		
+		</p:panel>
+	</ui:define>
+
+
+
+</ui:composition>
+</html>

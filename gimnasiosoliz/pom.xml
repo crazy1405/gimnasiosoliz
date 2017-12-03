@@ -34,7 +34,14 @@
             <url>http://www.apache.org/licenses/LICENSE-2.0.html</url>
         </license>
     </licenses>
-
+	<repositories>
+	    <repository>
+	        <id>prime-repo</id>
+	        <name>PrimeFaces Maven Repository</name>
+	        <url>http://repository.primefaces.org</url>
+	        <layout>default</layout>
+	    </repository>
+	</repositories>
     <properties>
         <!-- Explicitly declaring the source encoding eliminates the following 
             message: -->
@@ -199,6 +206,11 @@
         	<groupId>org.primefaces</groupId>
         	<artifactId>primefaces</artifactId>
         	<version>6.1</version>
+        </dependency>
+        <dependency>
+        	<groupId>org.primefaces.themes</groupId>
+        	<artifactId>all-themes</artifactId>
+        	<version>1.0.10</version>
         </dependency>
     </dependencies>
 

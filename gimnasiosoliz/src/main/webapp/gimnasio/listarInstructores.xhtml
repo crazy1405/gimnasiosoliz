@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:uti="http://java.sun.com/jsf/composite/util"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition
+	template="/WEB-INF/facelets/templates/plantillaGeneral.xhtml">
+
+	<ui:define name="cuerpo">
+	
+		<p:panel>
+		<f:facet name="header">
+        		Lista de Instructores
+    		</f:facet>
+    		
+    	<p:panelGrid>
+    		<p:row>	
+    			<p:column>Cedula</p:column>
+    			<p:column>
+    				<p:inputText value="#{gimnasioCtrl.clienteCtrl.cedulaBusqueda}"></p:inputText>
+    			</p:column>
+				<p:column>
+					<p:commandButton value="Mostrar" ajax="false" actionListener="#{gimnasioCtrl.clienteCtrl.recuperarInstructor}"></p:commandButton>
+				</p:column>
+			</p:row>
+    	</p:panelGrid>			
+		<p:panelGrid>
+				<p:row>
+					<p:column colspan="10">
+						<p:dataTable id="listadoPersonas"
+							styleClass="sigmaTablaSinEspacio" widgetVar="listadoPersonas"
+							resizableColumns="true" liveResize="true"
+							emptyMessage="No se han encontrado registros..."
+							value="#{gimnasioCtrl.clienteCtrl.items}" var="item">
+							<f:facet name="Ver Detalle de los socios"></f:facet>
+							<p:column headerText="Eliminar" style="width:3%;">
+								<p:commandButton  icon="fa fa-remove" type="button"/>
+							</p:column>
+							
+							<p:column headerText="Nombres" style="width:30%;">
+								<h:outputText value="#{item.nombre}" />
+							</p:column>
+							
+							
+							
+							<p:column headerText="Ficha" style="width:3%;">
+								<p:commandButton  icon="fa fa-fax" actionListener="#{gimnasioCtrl.doIrFichaSocio}"/>
+							</p:column>
+						</p:dataTable>
+					</p:column>
+				</p:row>
+				<p:row>
+					<p:column>
+						<p:commandButton actionListener="#{gimnasioCtrl.doIrLectorBarra}" value="regresar" icon="fa fa-backward"></p:commandButton>
+					</p:column>
+				
+				</p:row>
+				
+		</p:panelGrid>
+		
+		
+		
+		</p:panel>
+	</ui:define>
+
+
+
+</ui:composition>
+</html>

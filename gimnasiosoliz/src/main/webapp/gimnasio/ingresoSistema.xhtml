@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:uti="http://java.sun.com/jsf/composite/util"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition
+	template="/WEB-INF/facelets/templates/plantillaGeneral.xhtml">
+
+	<ui:define name="cuerpo">
+	<p:panel>
+		<p:panel>
+		<p:panelGrid  border="1" style="margin: 0 auto;">
+			<p:row>
+				<p:column colspan="20">
+					<p:outputPanel id="photoLogo">
+              			<p:graphicImage name="logo/logo5.jpg" style="high:100;"/> 
+            
+        				</p:outputPanel>
+				</p:column>
+			</p:row>
+		</p:panelGrid>
+	</p:panel>
+	</p:panel>
+		<p:panel>
+		
+    		<p:panelGrid border="1" style="margin: 0 auto;">
+    			<p:row>
+    				<p:column colspan="2" style="text-align:center">
+    				<b>INGRESO AL SISTEMA GIMNASIO</b>
+    				</p:column>
+    			</p:row>
+    			<p:row>
+    				<b><p:column>Usuario</p:column></b>
+    				<p:column>
+    					<p:inputText value="#{gimnasioCtrl.usuario.nombre}"></p:inputText>
+    				</p:column>
+    			</p:row>
+    			<p:row>
+    				<b><p:column>Contraseña</p:column></b>
+    				<p:column>
+    					<p:password value="#{gimnasioCtrl.usuario.pass}"/>
+    				</p:column>
+    			</p:row>
+			<p:row>
+			<p:growl id="growl" showDetail="true" sticky="true" />  
+				<p:column colspan="2" style="text-align:center">
+					<p:commandButton value="Ingresar" actionListener="#{gimnasioCtrl.doIngresar}" update="growl"></p:commandButton>				
+				</p:column>	
+			</p:row>
+			<p:row>
+				<p:column colspan="2">
+				<b><h:outputText value="Desarrollado por: Ing. Jorge Ortiz (0996578211)"></h:outputText></b>
+				</p:column>
+			</p:row>
+			<p:row>
+				<p:column colspan="2">
+				<b><h:outputText value="Todos los derechos reservados. @Copyrigth"></h:outputText></b>
+				</p:column>
+			</p:row>
+		</p:panelGrid>
+		</p:panel>
+	</ui:define>
+
+
+
+</ui:composition>
+</html>
