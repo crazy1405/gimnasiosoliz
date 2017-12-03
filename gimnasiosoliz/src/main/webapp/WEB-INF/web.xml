@@ -20,15 +20,6 @@
         <param-name>primefaces.THEME</param-name>
         <param-value>blitzer</param-value>
 </context-param>
-	<!--<servlet>
-		<display-name>ImprimeReportes</display-name>
-		<servlet-name>Imprime</servlet-name>
-		<servlet-class>sigma.core.reportes.ImprimeReporte</servlet-class>
-	</servlet>-->
-	<servlet-mapping>
-		<servlet-name>Imprime</servlet-name>
-		<url-pattern>/imprime</url-pattern>
-	</servlet-mapping>
 	<context-param>
 		<param-name>javax.servlet.jsp.jstl.fmt.localizationContext</param-name>
 		<param-value>resources.application</param-value>

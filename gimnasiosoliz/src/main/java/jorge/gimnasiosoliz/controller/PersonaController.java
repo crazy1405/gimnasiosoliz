@@ -29,7 +29,7 @@ public class PersonaController
 		System.out.println(cliente);
 		//clienteDAO.insertar(cliente);
 		
-		return null;
+		return "lectorBarra.xhtml";
 	}
 	
 	
