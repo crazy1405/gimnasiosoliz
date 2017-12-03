@@ -7,12 +7,14 @@ import javax.inject.Inject;
 
 import jorge.gimnasiosoliz.data.ClienteDAO;
 import jorge.gimnasiosoliz.model.Cliente;
+import jorge.gimnasiosoliz.util.ValidarCedula;
 
 @ManagedBean
 @SessionScoped
 public class PersonaController 
 {
 	private Cliente cliente;
+	private ValidarCedula validarCedula;
 	
 	@Inject
 	private ClienteDAO clienteDAO;
@@ -21,17 +23,23 @@ public class PersonaController
 	public void init()
 	{
 		cliente = new Cliente();
+		validarCedula = new ValidarCedula();
 	}
 	
 	public String guardarPersona()
 	{
 		System.out.println("Guardando persona");
 		System.out.println(cliente);
-		//clienteDAO.insertar(cliente);
+		clienteDAO.insertar(cliente);
 		
 		return "lectorBarra.xhtml";
 	}
 	
+	public String validarCedula(String cedula) {
+		validarCedula.validarCedula(cedula);
+		
+		return null;
+	}
 	
 	
 	public Cliente getCliente() {

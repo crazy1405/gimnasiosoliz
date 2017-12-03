@@ -26,7 +26,7 @@ public class Cliente extends Persona implements Serializable{
 	@Column(name="cli_estatura", length=4)
 	private Integer estatura;
 	
-	@Column(name="cli_observac", length=4)
+	@Column(name="cli_observac", length=300)
 	private String observaciones;
 
 	@OneToMany(mappedBy="cliente")
