@@ -2,40 +2,61 @@ package jorge.gimnasiosoliz.controller;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import javax.inject.Inject;
 
-import jorge.gimnasiosoliz.data.PersonaDAO;
-import jorge.gimnasiosoliz.model.Persona;
+import jorge.gimnasiosoliz.data.ClienteDAO;
+import jorge.gimnasiosoliz.model.Cliente;
 
 @ManagedBean
+@SessionScoped
 public class PersonaController 
 {
-	private Persona persona;
+	private Cliente cliente;
 	
 	@Inject
-	private PersonaDAO personaDAO;
+	private ClienteDAO clienteDAO;
 	
 	@PostConstruct
 	public void init()
 	{
-		persona = new Persona();
+		cliente = new Cliente();
 	}
 	
-	public Persona getPersona()
+	public String guardarPersona()
 	{
-		return persona;
+		System.out.println("Guardando persona");
+		System.out.println(cliente);
+		//clienteDAO.insertar(cliente);
+		
+		return null;
 	}
 	
 	
-	public void setPersona(Persona persona)
-	{
-		this.persona=persona;
-	}
 	
-	public void guardarPersona()
-	{
-		System.out.println(persona);
-		//Invoca el DAO
-		personaDAO.insertar(persona);
+	public Cliente getCliente() {
+		return cliente;
 	}
+
+
+
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
+	}
+
+	public ClienteDAO getClienteDAO() {
+		return clienteDAO;
+	}
+
+	public void setClienteDAO(ClienteDAO clienteDAO) {
+		this.clienteDAO = clienteDAO;
+	}
+
+
+
+	
+
+
+
+	
 }

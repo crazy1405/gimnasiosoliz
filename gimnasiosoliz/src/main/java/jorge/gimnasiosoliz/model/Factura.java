@@ -40,7 +40,7 @@ public class Factura implements Serializable{
 	@ManyToOne
 	@JoinColumn(name="fact_cli_id")
 	private Cliente cliente;
-
+	
 	@OneToMany(mappedBy="factura")
 	private List<DetalleFactura> detalleFactura;
 	

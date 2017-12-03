@@ -23,7 +23,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 @Table(name="persona")
-public class Persona implements Serializable{
+public abstract class Persona implements Serializable{
 	@Id
 	@Column(name="per_cedula", length=10)
 	@NotNull
@@ -60,9 +60,9 @@ public class Persona implements Serializable{
 	@Column(name="per_fecha_nacimiento")
 	private Date fechaNacimiento;
 	
-	@OneToOne(fetch=FetchType.LAZY)
+	/*@OneToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="per_cli_id")
-	private Cliente cliente;
+	private Cliente cliente;*/
 	
 	@ManyToOne
 	@JoinColumn(name="per_login_id")
@@ -129,101 +129,11 @@ public class Persona implements Serializable{
 	public void setFechaNacimiento(Date fechaNacimiento) {
 		this.fechaNacimiento = fechaNacimiento;
 	}
-	public Cliente getCliente() {
-		return cliente;
-	}
-	public void setCliente(Cliente cliente) {
-		this.cliente = cliente;
-	}
 	public Login getLogin() {
 		return login;
 	}
 	public void setLogin(Login login) {
 		this.login = login;
-	}
-	
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((apellido == null) ? 0 : apellido.hashCode());
-		result = prime * result + ((cedula == null) ? 0 : cedula.hashCode());
-		result = prime * result + ((celular == null) ? 0 : celular.hashCode());
-		result = prime * result + ((cliente == null) ? 0 : cliente.hashCode());
-		result = prime * result + ((direccion == null) ? 0 : direccion.hashCode());
-		result = prime * result + ((email == null) ? 0 : email.hashCode());
-		result = prime * result + ((fechaNacimiento == null) ? 0 : fechaNacimiento.hashCode());
-		result = prime * result + ((login == null) ? 0 : login.hashCode());
-		result = prime * result + ((nombre == null) ? 0 : nombre.hashCode());
-		result = prime * result + ((sexo == null) ? 0 : sexo.hashCode());
-		result = prime * result + ((telefono == null) ? 0 : telefono.hashCode());
-		return result;
-	}
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Persona other = (Persona) obj;
-		if (apellido == null) {
-			if (other.apellido != null)
-				return false;
-		} else if (!apellido.equals(other.apellido))
-			return false;
-		if (cedula == null) {
-			if (other.cedula != null)
-				return false;
-		} else if (!cedula.equals(other.cedula))
-			return false;
-		if (celular == null) {
-			if (other.celular != null)
-				return false;
-		} else if (!celular.equals(other.celular))
-			return false;
-		if (cliente == null) {
-			if (other.cliente != null)
-				return false;
-		} else if (!cliente.equals(other.cliente))
-			return false;
-		if (direccion == null) {
-			if (other.direccion != null)
-				return false;
-		} else if (!direccion.equals(other.direccion))
-			return false;
-		if (email == null) {
-			if (other.email != null)
-				return false;
-		} else if (!email.equals(other.email))
-			return false;
-		if (fechaNacimiento == null) {
-			if (other.fechaNacimiento != null)
-				return false;
-		} else if (!fechaNacimiento.equals(other.fechaNacimiento))
-			return false;
-		if (login == null) {
-			if (other.login != null)
-				return false;
-		} else if (!login.equals(other.login))
-			return false;
-		if (nombre == null) {
-			if (other.nombre != null)
-				return false;
-		} else if (!nombre.equals(other.nombre))
-			return false;
-		if (sexo == null) {
-			if (other.sexo != null)
-				return false;
-		} else if (!sexo.equals(other.sexo))
-			return false;
-		if (telefono == null) {
-			if (other.telefono != null)
-				return false;
-		} else if (!telefono.equals(other.telefono))
-			return false;
-		return true;
 	}
 	
 	

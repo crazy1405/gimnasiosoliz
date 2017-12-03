@@ -1,5 +1,6 @@
 package jorge.gimnasiosoliz.model;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -10,7 +11,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="tipo_pago")
-public class TipoPago {
+public class TipoPago implements Serializable{
 	@Id
 	@Column(name="tPag_id")
 	private Integer id;

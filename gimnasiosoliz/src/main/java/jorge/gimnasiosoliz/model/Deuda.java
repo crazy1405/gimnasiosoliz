@@ -1,5 +1,6 @@
 package jorge.gimnasiosoliz.model;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 
 import javax.persistence.Column;
@@ -11,7 +12,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="deuda")
-public class Deuda {
+public class Deuda implements Serializable{
 	@Id
 	@Column(name="deu_id")
 	private Integer id;
