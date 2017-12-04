@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+	
+
+<ui:composition
+	template="/WEB-INF/facelets/templates/plantillaGeneral.xhtml">
+
+	<ui:define name="cuerpo">
+	
+	
+		<p:panel id="panel1">
+			<p:panelGrid>
+				<p:row>
+					<p:column>Id</p:column>
+					<p:column>
+						<p:inputText value="#{ejercicioController.ejercicio.id}"></p:inputText>
+					</p:column>
+				</p:row>
+				<p:row>
+					<p:column>EJERCICIO</p:column>
+					<p:column>
+						<p:inputText value="#{ejercicioController.ejercicio.descripcion}"></p:inputText>
+					</p:column>
+				</p:row>
+				<p:row>
+					<p:column>
+						<p:commandButton value="Guardar Actividad" action="#{ejercicioController.guardarEjercicio()}"></p:commandButton>
+					</p:column>
+				</p:row>
+			</p:panelGrid>
+			<p:commandButton action="#{ejercicioController.addPlanEjercicio()}" value="+ Plan" immediate="true" update="tblPlanes" >
+				<f:ajax render="tblPlanes" execute="@all"></f:ajax>
+			</p:commandButton>
+	
+			<p:dataTable value="#{ejercicioController.ejercicio.planEjercicios}" var="planEjercicio" id="tblPlanes">
+				<p:column>
+					<f:facet name="header">Codigo</f:facet>
+					<h:inputText value="#{planEjercicio.id}" />
+				</p:column>
+				
+				<p:column>
+					<f:facet name="header">Num. Series</f:facet>
+					<h:inputText value="#{planEjercicio.numSeries}" />
+				</p:column>
+				
+				<p:column>
+					<f:facet name="header">Repeticiones</f:facet>
+					<h:inputText value="#{planEjercicio.repeticiones}" />
+				</p:column>
+				
+			</p:dataTable>
+		</p:panel>
+		
+	</ui:define>
+
+
+
+</ui:composition>
+</html>

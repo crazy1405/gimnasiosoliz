@@ -21,10 +21,6 @@ public class PlanEjercicio implements Serializable{
 	
 	@Column(name="pejer_repeticiones", length=3)
 	private Integer repeticiones;
-
-	@ManyToOne
-	@JoinColumn(name="pejer_ejer_id")
-	private Ejercicio ejercicio;
 	
 	@ManyToOne
 	@JoinColumn(name="pejer_cli_id")
@@ -54,13 +50,6 @@ public class PlanEjercicio implements Serializable{
 		this.repeticiones = repeticiones;
 	}
 
-	public Ejercicio getEjercicio() {
-		return ejercicio;
-	}
-
-	public void setEjercicio(Ejercicio ejercicio) {
-		this.ejercicio = ejercicio;
-	}
 
 	public Cliente getCliente() {
 		return cliente;
