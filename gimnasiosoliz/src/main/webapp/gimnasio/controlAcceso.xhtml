@@ -49,11 +49,10 @@
         		CONTROL DE INGRESO
     	</f:facet>
     	<p:password value="#{controlAccesoController.cedulaBusqueda}" />
-    	<p:commandButton value="buscar" action="#{controlAccesoController.controlAcceso()}" id="buscar" update="panelInfoSocio"></p:commandButton>
+    	<p:commandButton value="buscar" action="#{controlAccesoController.controlAcceso()}" id="buscar" update="@form"></p:commandButton>
     	<p:clock pattern="HH:mm:ss dd-MM-yyyy" mode="server" />
 		<p:panelGrid id="panelInfoSocio" columns="3"  border="1" style="margin: 0 auto;">
-			
-				
+
 			<!--<p:graphicImage id="image4" name="demo/images/photocam/#{gimnasioCtrl.cliente.cedula}.jpeg" width="300"></p:graphicImage>-->
 			
 			<p:panelGrid>
@@ -149,8 +148,9 @@
 		</p:column>
 		
 		 <p:column>
-			<p:commandButton icon="fa fa-edit"  title="Editar" action="#{pagina.doIrEditarSocio()}"></p:commandButton>
-			<f:param name="keyRecupera"  />
+			<p:commandButton icon="fa fa-edit"  title="Editar" action="#{personaController.actualizarPersona()}">
+				<f:param name="keyRecupera"  value="#{controlAccesoController.cliente.cedula}"/>
+			</p:commandButton>
 		</p:column>
 		<p:column>
 			<p:commandButton icon="fa fa-fax" title="Ficha" >
@@ -211,12 +211,14 @@
 						    <p:column headerText="Telefono">
 						        <h:outputText value="#{cliente.telefono}" />
 						    </p:column>
+						   	  
 			 
 					    
 		</p:dataTable>			
 	</p:panel>
 	</h:form>
 </p:dialog>
+
 <p:dialog id="dlgListadoActividades" widgetVar="listadoActividades"
 	header="LISTADO DE Actividades" modal="true"
 	height="500" width="1200">
@@ -229,7 +231,7 @@
    				<p:inputText ></p:inputText>
    			</p:column>
 			<p:column>
-				<p:commandButton value="Mostrar" action="#{personaController.buscarPersonaCedula()}" update="tblEjercicios"></p:commandButton>
+				<p:commandButton value="Mostrar" update="tblEjercicios"></p:commandButton>
 			</p:column>
 		</p:row>
    	</p:panelGrid>
@@ -240,14 +242,17 @@
 						    <p:column headerText="Nombre">
 						        <h:outputText value="#{ejercicio.descripcion}" />
 						    </p:column>
-						   
-			 
-					    
+						    <p:column>
+						    		<p:commandButton value="eliminar" action="#{ejercicioController.eliminarEjercicio()}" update="tblEjercicios">
+						    			<f:param name="keyRecupera"  value="#{ejercicio.id}"/>
+						    		</p:commandButton>
+						    </p:column>
+						         
 		</p:dataTable>			
 	</p:panel>
 	</h:form>
-</p:dialog>
+</p:dialog>		
+
 </ui:define>
-	
 </ui:composition>
 </html>

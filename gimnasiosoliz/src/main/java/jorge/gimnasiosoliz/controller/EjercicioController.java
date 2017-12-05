@@ -57,9 +57,17 @@ public class EjercicioController
 		System.out.println(ejercicio);
 		//Inyecta el DAO
 		ejercicioDAO.insertar(ejercicio);
-	    FacesContext facesContext1 = FacesContext.getCurrentInstance();
-        facesContext1.addMessage(null, new FacesMessage("Guardado Exitoso"));
-		loadEjercicios();
+		FacesContext facesContext1 = FacesContext.getCurrentInstance();
+		try {
+			System.out.println(ejercicio);
+			//Inyecta el DAO
+			ejercicioDAO.insertar(ejercicio);
+		    
+	        facesContext1.addMessage(null, new FacesMessage("Guardado Exitoso"));
+			loadEjercicios();
+		} catch (Exception e) {
+			facesContext1.addMessage(null, new FacesMessage("Error de clave primaria"));
+		}
 	}
 
 	public List<Ejercicio> getEjercicios() {

@@ -13,6 +13,7 @@ import javax.inject.Inject;
 import jorge.gimnasiosoliz.data.ClienteDAO;
 import jorge.gimnasiosoliz.model.Cliente;
 import jorge.gimnasiosoliz.model.Telefono;
+import jorge.gimnasiosoliz.util.Bean;
 import jorge.gimnasiosoliz.util.ValidarCedula;
 
 @ManagedBean
@@ -96,8 +97,9 @@ public class PersonaController
     }
 	
 	public String actualizarPersona() {
-		
-		return null;
+		System.out.println(Bean.getkeyRecupera());
+		cliente = clienteDAO.leer(Bean.getkeyRecupera());
+		return "editarSocio.xhtml";
 	}
 	
 	public String addTelefono() {
