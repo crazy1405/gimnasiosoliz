@@ -66,10 +66,5 @@ public class Ejercicio implements Serializable{
 	public String toString() {
 		return "Ejercicio [id=" + id + ", descripcion=" + descripcion + ", planEjercicios=" + planEjercicios + "]";
 	}
-
-	
-	
-	
-
 	
 }

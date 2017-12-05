@@ -28,8 +28,8 @@ public class ClienteDAO
 	
 	public Cliente leer(String cedula)
 	{
-		em.find(Cliente.class, cedula);
-		return null;
+		Cliente c = em.find(Cliente.class, cedula);
+		return c;
 	}
 
 	

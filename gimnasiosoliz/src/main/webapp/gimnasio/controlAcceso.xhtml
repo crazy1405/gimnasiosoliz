@@ -15,7 +15,7 @@
 	        <p:submenu label="Inicio" icon="fa fa-home">
 	        </p:submenu>
 	        <p:submenu label="Socio" icon="fa fa-user">
-	        	<p:menuitem value="Nuevo" action="#{gimnasioCtrl.doIrIngresarCliente}" ></p:menuitem>
+	        	<p:menuitem value="Nuevo" action="#{pagina.doIrNuevoSocio()}" ></p:menuitem>
 				<p:menuitem value="Ver Ficha" action="#{gimnasioCtrl.doIrFichaSocio}">
 					<f:param name="keyRecupera" />
 				</p:menuitem>
@@ -49,23 +49,23 @@
         		CONTROL DE INGRESO
     	</f:facet>
     	<p:password value="#{controlAccesoController.cedulaBusqueda}" />
-    	<p:commandButton value="buscar" action="#{gimnasioCtrl.limpiarRegistro}" id="buscar" ></p:commandButton>
+    	<p:commandButton value="buscar" action="#{controlAccesoController.controlAcceso()}" id="buscar" ></p:commandButton>
     	<p:clock pattern="HH:mm:ss dd-MM-yyyy" mode="server" />
 		<p:panelGrid id="panelInfoSocio" columns="3"  border="1" style="margin: 0 auto;">
 			
 				
-			<p:graphicImage id="image4" name="demo/images/photocam/#{gimnasioCtrl.cliente.cedula}.jpeg" width="300"></p:graphicImage>
+			<!--<p:graphicImage id="image4" name="demo/images/photocam/#{gimnasioCtrl.cliente.cedula}.jpeg" width="300"></p:graphicImage>-->
 			
 			<p:panelGrid>
 				<p:row>
 					<p:column colspan="4">
-						<b><h:outputText value="#{gimnasioCtrl.cliente.nombre} #{gimnasioCtrl.cliente.apellido}" style="font-size: 30px;"></h:outputText></b>
+						<b><h:outputText value="#{controlAccesoController.cliente.nombre} #{controlAccesoController.cliente.apellido}" style="font-size: 30px;"></h:outputText></b>
 					</p:column>
 				</p:row>
 				<p:row>
 					<p:column width="100"><b>Fecha Vencimiento</b></p:column>
 					<p:column colspan="2">
-						<h:outputText value="#{gimnasioCtrl.inscripcion.fechaVence}" width="100">
+						<h:outputText width="100">
 							
 						</h:outputText>
 					</p:column>
@@ -74,13 +74,13 @@
 				</p:row>
 				<p:row >
 					<p:column colspan="4">
-						<b><h:outputText value="#{gimnasioCtrl.mensajeAdvertencia}" style="text-align:center;font-size:26px; margin:12px; color:#{gimnasioCtrl.colorAdvertencia};"></h:outputText></b>
+						<b><h:outputText value="CORRECTO" style="text-align:center;font-size:26px; margin:12px; color:#{gimnasioCtrl.colorAdvertencia};"></h:outputText></b>
 					</p:column>
 				</p:row>
 				<p:row>
 					<p:column><b>Días restantes</b></p:column>
 					<p:column>
-						<b><h:outputText value="#{gimnasioCtrl.inscripcion.diasRestantes}" style="color:#{gimnasioCtrl.colorAdvertencia};font-size: 18px;"></h:outputText></b>
+						<b><h:outputText value="25" style="color:#FFFFF;font-size: 18px;"></h:outputText></b>
 					</p:column>
 					<p:column></p:column>
 					<p:column></p:column>
@@ -91,7 +91,7 @@
 						<b>Saldo Pendiente</b>
 					</p:column>
 					<p:column>
-					<h:outputText value="#{gimnasioCtrl.calculaDeuda}" style="font-size: 18px;color:#FF0000" ></h:outputText>
+					<h:outputText value="23" style="font-size: 18px;color:#FF0000" ></h:outputText>
 					
 					</p:column>
 					<p:column></p:column>
@@ -100,7 +100,7 @@
 				<p:row>
 					<p:column><b>Peso Actual</b></p:column>
 					<p:column>
-						<h:outputText value="#{gimnasioCtrl.cliente.peso}"></h:outputText>
+						<h:outputText value="#{controlAccesoController.cliente.peso}"></h:outputText>
 					</p:column>
 					<p:column><b>LIBRAS</b></p:column>
 					<p:column></p:column>
@@ -109,17 +109,17 @@
 				<p:row>
 					<p:column><b>INDICE DE MASA CORPORAL</b></p:column>
 					<p:column>
-						<h:outputText value="#{gimnasioCtrl.pesoRecomendado}"></h:outputText>
+						<h:outputText value="#{controlAccesoController.indiceCorporal}"></h:outputText>
 					</p:column>
 					<p:column>
-						<h:outputText value="#{gimnasioCtrl.advertenciaPeso}"></h:outputText>
+						<h:outputText value="#{controlAccesoController.advertenciaPeso}"></h:outputText>
 					</p:column>
 					<p:column></p:column>
 				</p:row>
 				<p:row>
 					<p:column><b><h:outputText value="Altura"></h:outputText></b></p:column>
 					<p:column>
-						<h:outputText value="#{gimnasioCtrl.cliente.altura}"></h:outputText>
+						<h:outputText value="#{controlAccesoController.cliente.estatura}"></h:outputText>
 					</p:column>
 					<p:column><b>CM</b></p:column>
 					<p:column></p:column>
