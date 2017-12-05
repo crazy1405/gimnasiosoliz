@@ -1,12 +1,15 @@
 package jorge.gimnasiosoliz.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
@@ -43,8 +46,18 @@ public class Cliente extends Persona implements Serializable{
 	
 	/*@OneToOne(fetch=FetchType.LAZY, mappedBy="cliente")
 	private Persona persona;*/
-	
+	@OneToMany(cascade= {CascadeType.ALL}, fetch=FetchType.EAGER)
+	@JoinColumn(name="cliente", referencedColumnName="per_cedula")
+	private List<Telefono> telefonos;
 
+	public void addTelefono(Telefono telefono) {
+		if(telefonos==null) {
+			telefonos = new ArrayList<>();
+			
+		}
+		telefonos.add(telefono);
+		
+	}
 	
 	
 	public Integer getPeso() {
@@ -108,6 +121,16 @@ public class Cliente extends Persona implements Serializable{
 
 	public void setDieta(List<Dieta> dieta) {
 		this.dieta = dieta;
+	}
+
+
+	public List<Telefono> getTelefonos() {
+		return telefonos;
+	}
+
+
+	public void setTelefonos(List<Telefono> telefonos) {
+		this.telefonos = telefonos;
 	}
 	
 	

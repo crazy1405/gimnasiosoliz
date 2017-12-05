@@ -9,9 +9,11 @@ import javax.inject.Inject;
 
 import jorge.gimnasiosoliz.data.ClienteDAO;
 import jorge.gimnasiosoliz.model.Cliente;
+import jorge.gimnasiosoliz.model.Telefono;
 import jorge.gimnasiosoliz.util.ValidarCedula;
 
 @ManagedBean
+@SessionScoped
 public class PersonaController 
 {
 	private Cliente cliente;
@@ -26,6 +28,7 @@ public class PersonaController
 	{
 		cliente = new Cliente();
 		validarCedula = new ValidarCedula();
+		cliente.addTelefono(new Telefono());
 		loadPersonas();
 	}
 	
@@ -45,6 +48,13 @@ public class PersonaController
 	}
 	
 	public String actualizarPersona() {
+		
+		return null;
+	}
+	
+	public String addTelefono() {
+		System.out.println("Agregando Telefono");
+		cliente.addTelefono(new Telefono());
 		
 		return null;
 	}
@@ -81,12 +91,6 @@ public class PersonaController
 	public void setClientes(List<Cliente> clientes) {
 		this.clientes = clientes;
 	}
-
-	
-
-	
-
-
 
 	
 }

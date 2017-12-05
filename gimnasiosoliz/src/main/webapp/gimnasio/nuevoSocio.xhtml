@@ -54,19 +54,17 @@
 				<p:row>
 					<p:column></p:column>
 					<p:column>
-						<b><h:outputText value="Telefono"></h:outputText></b>
-					</p:column>
-					<p:column>
-						<p:inputText value="#{personaController.cliente.telefono}"></p:inputText>
-					</p:column>
-				</p:row>
-				<p:row>
-					<p:column></p:column>
-					<p:column>
 						<b><h:outputText value="Dirección"></h:outputText></b>
 					</p:column>
 					<p:column>
 						<p:inputText value="#{personaController.cliente.direccion}"></p:inputText>
+					</p:column>
+				</p:row>
+				<p:row>
+					<p:column></p:column>
+					<p:column><b>Telefonos</b></p:column>
+					<p:column>
+						<p:commandButton type="button" value="Añadir" onclick="PF('dlgTelefonos').show();"></p:commandButton>
 					</p:column>
 				</p:row>
 					
@@ -156,7 +154,6 @@
 					</p:column>
 					
 				</p:row>
-				
 			</p:panelGrid>
 		<p:outputPanel id="photo">
               <p:graphicImage /> 
@@ -164,15 +161,32 @@
         </p:outputPanel>
          <!--  <p:commandButton type="button" title="Capturar" value="Tomar" onclick="PF('pc').capture()" icon="fa fa-camera-retro">
        		
-         </p:commandButton>-->
-     
-					
-		</p:panelGrid>		
-	
-			
+         </p:commandButton>-->		
+		</p:panelGrid>			
 			<h:commandButton action="lectorBarra" value="regresar" />
 		</p:panel>
-		
+<p:dialog widgetVar="dlgTelefonos" header="TELEFONOS" modal="true" height="500" width="900">
+		<h:form>
+			<p:panel>
+	    			<p:commandButton action="#{personaController.addTelefono()}" value="+ Telefono" immediate="true" update="tblTelefonos" >
+						<f:ajax render="tblTelefonos" execute="@all"></f:ajax>
+					</p:commandButton>
+			
+					<p:dataTable value="#{personaController.cliente.telefonos}" var="telefono" id="tblTelefonos" styleClass="sigmaTablaSinEspacio">
+						<p:column headerText="Código">
+							<h:inputText value="#{telefono.codigo}" />
+						</p:column>
+						
+						<p:column headerText="Numero Telefono">
+							<h:inputText value="#{telefono.numero}" />
+						</p:column>
+						<p:column headerText="Tipo">
+							<h:inputText value="#{telefono.tipo}" />
+						</p:column>
+					</p:dataTable>
+			</p:panel>
+		</h:form>
+</p:dialog>
 	</ui:define>
 
 
