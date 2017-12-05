@@ -23,8 +23,8 @@
 	        </p:submenu>
 	        
 	         <p:submenu label="Actividades" icon="fa fa-soccer-ball-o">
-	        	<p:menuitem value="Nuevo" ></p:menuitem>
-				<p:menuitem value="Ver todos" action="#{gimnasioCtrl.doIrActividades}"></p:menuitem>
+	        	<p:menuitem value="Nuevo" action="#{pagina.doIrNuevaActividad()}"></p:menuitem>
+				<p:menuitem value="Ver todos" onclick="PF('listadoActividades').show()"></p:menuitem>
 	        </p:submenu> 
 	        <p:submenu label="Instructores" icon="fa fa-street-view">
 	        	<p:menuitem value="Nuevo" action="#{gimnasioCtrl.doIrIngresarInstrutor}"></p:menuitem>
@@ -211,6 +211,36 @@
 						    <p:column headerText="Telefono">
 						        <h:outputText value="#{cliente.telefono}" />
 						    </p:column>
+			 
+					    
+		</p:dataTable>			
+	</p:panel>
+	</h:form>
+</p:dialog>
+<p:dialog id="dlgListadoActividades" widgetVar="listadoActividades"
+	header="LISTADO DE Actividades" modal="true"
+	height="500" width="1200">
+	<h:form>
+		<p:panel>
+   	<p:panelGrid>
+   		<p:row>
+   			<p:column>Codigo Ejercicio</p:column>
+   			<p:column>
+   				<p:inputText ></p:inputText>
+   			</p:column>
+			<p:column>
+				<p:commandButton value="Mostrar" action="#{personaController.buscarPersonaCedula()}" update="tblEjercicios"></p:commandButton>
+			</p:column>
+		</p:row>
+   	</p:panelGrid>
+    	<p:dataTable var="ejercicio" value="#{ejercicioController.ejercicios}" id="tblEjercicios">
+						    <p:column headerText="Id">
+						        <h:outputText value="#{ejercicio.id}" />
+						    </p:column>
+						    <p:column headerText="Nombre">
+						        <h:outputText value="#{ejercicio.descripcion}" />
+						    </p:column>
+						   
 			 
 					    
 		</p:dataTable>			

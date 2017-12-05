@@ -9,4 +9,7 @@ public class Pagina {
 		Redireccionar.redirecciona("nuevoSocio.jsf");		
 	}
 
+	public void doIrNuevaActividad() throws GimnasioException{
+		Redireccionar.redirecciona("nuevaActividad.jsf");		
+	}
 }

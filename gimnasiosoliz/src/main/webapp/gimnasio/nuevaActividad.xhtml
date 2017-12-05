@@ -28,7 +28,7 @@
 				</p:row>
 				<p:row>
 					<p:column>
-						<p:commandButton value="Guardar Actividad" action="#{ejercicioController.guardarEjercicio()}"></p:commandButton>
+						<p:commandButton value="Guardar Actividad" action="#{ejercicioController.guardarEjercicio()}" update="mensajes"></p:commandButton>
 					</p:column>
 				</p:row>
 			</p:panelGrid>
@@ -53,8 +53,9 @@
 				</p:column>
 				
 			</p:dataTable>
+			
 		</p:panel>
-		
+		<h:commandButton action="controlAcceso" value="regresar" />
 	</ui:define>
 
 

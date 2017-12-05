@@ -1,9 +1,13 @@
 package jorge.gimnasiosoliz.data;
 
+import java.util.List;
+
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 
+import jorge.gimnasiosoliz.model.Cliente;
 import jorge.gimnasiosoliz.model.Ejercicio;
 
 @Stateless
@@ -31,6 +35,16 @@ public class EjercicioDAO
 	public void borrar(String ejer_nombre)
 	{
 		em.remove(leer(ejer_nombre));
+	}
+	
+	public List<Ejercicio> listaEjercicios(){
+		/*JPQL no hace productos cartesianos*/
+		String jpql = "SELECT p FROM Ejercicio p";
+		Query query = em.createQuery(jpql, Ejercicio.class);
+		//Cuando el resultado es uno solo
+		//query.getSingleResult();
+		List<Ejercicio> listado = query.getResultList();
+		return listado;
 	}
 
 }
