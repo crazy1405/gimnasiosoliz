@@ -13,26 +13,26 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="categoria")
-public class Categoria implements Serializable{
-
+public class Categoria implements Serializable
+{
 	@Id
 	@Column(name="cat_id", length=10)
-	private Integer id;
+	private int id;
 	
-	@Column(name="cat_nombre", length=10)
+	@Column(name="cat_nombre", length=40)
 	private String nombre;
 	
-	@Column(name="cat_descripcion", length=10)
+	@Column(name="cat_descripcion", length=50)
 	private String descripcion;
 	
-	@OneToMany(mappedBy="categoria")
-	private List<Producto> producto;
+	//@OneToMany(mappedBy="categoria")
+	//private List<Producto> producto;
 
-	public Integer getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
@@ -52,12 +52,19 @@ public class Categoria implements Serializable{
 		this.descripcion = descripcion;
 	}
 
-	public List<Producto> getProducto() {
+	/*public List<Producto> getProducto() {
 		return producto;
 	}
 
 	public void setProducto(List<Producto> producto) {
 		this.producto = producto;
+	}*/
+	
+	
+	@Override
+	public String toString() {
+		//return "Categoria [id=" + id + ", nombre=" + nombre + ", descripcion=" + descripcion+ "]";
+		return id + "   "+ nombre;
 	}
 	
 	
