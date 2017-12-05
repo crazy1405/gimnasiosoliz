@@ -44,8 +44,8 @@
 							</p:column>
 							
 							<p:column headerText="Opciones">
-								<a href="modificar-producto.jsf?nombre=#{producto.nombre}">Editar  #{producto.nombre}</a>
-									<p:commandButton action="#{productoController.eliminar(producto.nombre)}" value="Borrar #{producto.pro_id}" immediate="true"/>	
+								<a href="modificar-producto.jsf?id=#{producto.pro_id}">Editar  #{producto.pro_id}</a>
+									<p:commandButton action="#{productoController.eliminar(producto.pro_id)}" value="Borrar #{producto.pro_id}" immediate="true"/>	
 							</p:column>
 						</p:dataTable>
 							
