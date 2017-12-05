@@ -1,45 +1,49 @@
 package jorge.gimnasiosoliz.model;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
-import java.util.List;
+
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+
 
 
 @Entity
 public class Producto implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@Column(name="pro_id", length=10)
-	private Integer id;
+	private int id;
 	
 	@Column(name="pro_nombre", length=100)
 	private String nombre;
 
 	@Column(name="pro_precio", length=5)
-	private BigDecimal precio;
+	private double precio;
 	
 	@Column(name="pro_stock", length=5)
-	private Integer stock;
+	private int stock;
 	
-	@ManyToOne
-	@JoinColumn(name="pro_cat_id")
-	private Categoria categoria;
+	//@ManyToOne
+	//@JoinColumn(name="pro_cat_id")
+	private int cat_id;
 	
-	@OneToMany(mappedBy="producto")
-	private List<DetalleFactura> detalleFactura;
 
 	public Integer getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(int id) 
+	{
+		System.out.println(id);
 		this.id = id;
 	}
 
@@ -49,23 +53,17 @@ public class Producto implements Serializable {
 
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
+		System.out.println(nombre);
 	}
 
 	
-	public BigDecimal getPrecio() {
+	public double getPrecio() {
 		return precio;
 	}
 
-	public void setPrecio(BigDecimal precio) {
+	public void setPrecio(double precio) {
 		this.precio = precio;
-	}
-
-	public Categoria getCategoria() {
-		return categoria;
-	}
-
-	public void setCategoria(Categoria categoria) {
-		this.categoria = categoria;
+		System.out.println(precio);
 	}
 
 	public Integer getStock() {
@@ -74,6 +72,22 @@ public class Producto implements Serializable {
 
 	public void setStock(Integer stock) {
 		this.stock = stock;
+		System.out.println(stock);
+	}
+	
+		
+	public int getCat_id() {
+		return cat_id;
+	}
+
+	public void setCat_id(int cat_id) {
+		this.cat_id = cat_id;
+	}
+
+	@Override
+	public String toString() {
+		return "Producto [id=" + id + ", nombre=" + nombre + ", precio=" + precio+" stock=  "+stock+" categoria=  "+cat_id+ "]";
+		//return id + "   "+ nombre;
 	}
 	
 	
