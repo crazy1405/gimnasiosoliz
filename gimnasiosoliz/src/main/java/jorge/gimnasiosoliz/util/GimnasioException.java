@@ -1,5 +1,6 @@
 package jorge.gimnasiosoliz.util;
 
+//Maneja las excepciones a nivel general.
 public class GimnasioException extends Exception{
 	public GimnasioException() {}
 	  

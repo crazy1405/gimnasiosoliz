@@ -39,7 +39,6 @@ public class CategoriaDAO
 		return c;
 	}
 	
-	
 	public List<Categoria> listadoCategorias()
 	{
 		/*JPQL no hace productos cartesianos*/
@@ -50,7 +49,5 @@ public class CategoriaDAO
 		List<Categoria> listado = query.getResultList();
 		return listado;
 	}
-	
-
 
 }

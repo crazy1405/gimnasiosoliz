@@ -3,6 +3,7 @@ package jorge.gimnasiosoliz.util;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 
+//valida la cédula de la persona
 public class ValidarCedula {
 
 	public void validarCedula(String cedula) {

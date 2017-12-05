@@ -149,16 +149,16 @@
 		</p:column>
 		
 		 <p:column>
-			<p:commandButton icon="fa fa-edit"  title="Editar" action="#{gimnasioCtrl.doIrActualizarCliente}"></p:commandButton>
-			<f:param name="keyRecupera" value="#{gimnasioCtrl.cliente.codigoPersona}" />
+			<p:commandButton icon="fa fa-edit"  title="Editar" action="#{pagina.doIrEditarSocio()}"></p:commandButton>
+			<f:param name="keyRecupera"  />
 		</p:column>
 		<p:column>
-			<p:commandButton icon="fa fa-fax" title="Ficha" actionListener="#{gimnasioCtrl.doIrFichaSocio}">
+			<p:commandButton icon="fa fa-fax" title="Ficha" >
 			
 			</p:commandButton>
 		</p:column>
 		<p:column>
-			<p:commandButton icon="fa fa-money"  title="Pagar Inscripción" actionListener="#{gimnasioCtrl.doIrActualizarInscripcion}">
+			<p:commandButton icon="fa fa-money"  title="Pagar Inscripción" >
 				
 			</p:commandButton>
 			

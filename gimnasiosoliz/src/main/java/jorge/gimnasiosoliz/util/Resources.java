@@ -37,6 +37,8 @@ import javax.persistence.PersistenceContext;
  * private EntityManager em;
  * </pre>
  */
+
+//Mensajes del sistema y recursos del Entity Manager para el JPA
 public class Resources {
 
     @Produces

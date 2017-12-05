@@ -2,6 +2,7 @@ package jorge.gimnasiosoliz.util;
 
 import javax.faces.context.FacesContext;
 
+//Maneja los mensajes que vera los usuarios.
 public class Mensajes {
 	  public Mensajes() {}
 	  

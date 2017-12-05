@@ -1,5 +1,7 @@
 package jorge.gimnasiosoliz.util;
 
+
+//Clase para guardar-leer los reportes, efectos sonidos, fotos de los socios.
 public class UbicacionArchivo {
 	private static String pathReportesJasper = "/Users/jorgeortiz/MEGA/GIMNASIOSOLIZ/reportes/";
 	private static String pathDescargaReportes = "/Users/jorgeortiz/MEGA/GIMNASIOSOLIZ/reportes/";
