@@ -1,8 +1,12 @@
 package jorge.gimnasiosoliz.data;
 
+import java.util.List;
+
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
+
 
 import jorge.gimnasiosoliz.model.Producto;
 
@@ -24,12 +28,28 @@ public class ProductoDAO
 	
 	public Producto leer(String prod_nombre)
 	{
-		em.find(Producto.class,prod_nombre);
-		return null;
+		Producto pro = em.find(Producto.class,prod_nombre);
+		return pro;
 	}
 	
 	public void borrar(String prod_nombre)
 	{
 		em.remove(prod_nombre);
 	}
+	
+	
+	
+	public List<Producto> listadoProductos()
+	{
+		/*JPQL no hace productos cartesianos*/
+		String jpql = "SELECT pro FROM Producto pro";
+		Query query = em.createQuery(jpql, Producto.class);
+		//Cuando el resultado es uno solo
+		//query.getSingleResult();
+		List<Producto> listado = query.getResultList();
+		return listado;
+	}
+	
+	
+	
 }
