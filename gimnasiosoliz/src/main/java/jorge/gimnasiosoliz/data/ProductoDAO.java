@@ -26,15 +26,15 @@ public class ProductoDAO
 		em.merge(producto);
 	}
 	
-	public Producto leer(String prod_nombre)
+	public Producto leer(int pro_id)
 	{
-		Producto pro = em.find(Producto.class,prod_nombre);
+		Producto pro = em.find(Producto.class,pro_id);
 		return pro;
 	}
 	
-	public void borrar(String prod_nombre)
+	public void borrar(int pro_id)
 	{
-		em.remove(prod_nombre);
+		em.remove(pro_id);
 	}
 	
 	
