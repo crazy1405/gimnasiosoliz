@@ -30,7 +30,7 @@ public class ProductoController
 	
 	private Categoria cate;
 	
-	private String nombre;
+	private int id;
 	
 	@Inject
     private FacesContext facesContext;
@@ -45,15 +45,15 @@ public class ProductoController
 	}
 	
 	
-	public String getNombre() {
-		return nombre;
+	public int getId() {
+		return id;
 	}
 
 
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-		System.out.println("El nombre es: "+nombre);
-		loadDatosEditar(nombre);
+	public void setId(int id) {
+		this.id = id;
+		System.out.println("El nombre es: "+id);
+		loadDatosEditar(id);
 	}
 
 
@@ -95,12 +95,12 @@ public class ProductoController
 	
 	
 	//ActionController
-	public String loadDatosEditar(String nombre)
+	public String loadDatosEditar(int id)
 	{
-		this.producto = productoDAO.leer(nombre);
+		this.producto = productoDAO.leer(id);
 		System.out.println("\n\n");
 		System.out.println("LoadDatosEditar");
-		System.out.println("LoadDatosEditar    + nombre     " + nombre);
+		System.out.println("LoadDatosEditar    + id     " + id);
 		System.out.println(producto);
 		return "";
 	}
@@ -123,11 +123,11 @@ public class ProductoController
 	 * @return String página a la que me va a redigir en este caso el listado 
 	 * de llos productos para confirmar la eliminación
 	 * */
-	public String eliminar(String nombre)
+	public String eliminar(int pro_id)
 	{
-		System.out.println("El id que va a borrar es el:      "+nombre);
+		System.out.println("El id que va a borrar es el:      "+pro_id);
 		//Llama al método borrar del DAO
-		productoDAO.borrar(nombre);
+		productoDAO.borrar(pro_id);
 		//Actualiza el listado de todas las categorías que existen en la DB
 		loadProductos();
 		return "listar-productos";
@@ -145,7 +145,7 @@ public class ProductoController
 		System.out.println("\n\n\n\n MÉTODO GUARDAR 2 \n\\n");
 		try 
 		{
-			if(this.nombre!=null)
+			if(this.id!=0)
 				productoDAO.actualizar(producto);
 			else
 				productoDAO.insertar(producto);
@@ -159,7 +159,7 @@ public class ProductoController
             facesContext.addMessage(null, m);
             return null;
 		}
-		return "listar-categoria";
+		return "listar-productos";
 	}
 	
 	private String getRootErrorMessage(Exception e) {
