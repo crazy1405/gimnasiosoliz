@@ -21,7 +21,7 @@ public class Producto implements Serializable {
 
 	@Id
 	@Column(name="pro_id", length=10)
-	private int id;
+	private int pro_id;
 	
 	@Column(name="pro_nombre", length=100)
 	private String nombre;
@@ -37,56 +37,89 @@ public class Producto implements Serializable {
 	private int cat_id;
 	
 
-	public Integer getId() {
-		return id;
+	public int getPro_id() {
+		return pro_id;
 	}
 
-	public void setId(int id) 
-	{
-		System.out.println(id);
-		this.id = id;
+
+
+
+
+	public void setPro_id(int pro_id) {
+		this.pro_id = pro_id;
 	}
+
+
+
+
 
 	public String getNombre() {
 		return nombre;
 	}
 
+
+
+
+
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
-		System.out.println(nombre);
 	}
 
-	
+
+
+
+
 	public double getPrecio() {
 		return precio;
 	}
 
+
+
+
+
 	public void setPrecio(double precio) {
 		this.precio = precio;
-		System.out.println(precio);
 	}
 
-	public Integer getStock() {
+
+
+
+
+	public int getStock() {
 		return stock;
 	}
 
-	public void setStock(Integer stock) {
+
+
+
+
+	public void setStock(int stock) {
 		this.stock = stock;
-		System.out.println(stock);
 	}
-	
-		
+
+
+
+
+
 	public int getCat_id() {
 		return cat_id;
 	}
+
+
+
+
 
 	public void setCat_id(int cat_id) {
 		this.cat_id = cat_id;
 	}
 
+
+
+
+
 	@Override
 	public String toString() {
-		return "Producto [id=" + id + ", nombre=" + nombre + ", precio=" + precio+" stock=  "+stock+" categoria=  "+cat_id+ "]";
+		return "Producto [id=" + pro_id + ", nombre=" + nombre + ", precio=" + precio+" stock=  "+stock+" categoria=  "+cat_id+ "]";
 		//return id + "   "+ nombre;
 	}
 	
