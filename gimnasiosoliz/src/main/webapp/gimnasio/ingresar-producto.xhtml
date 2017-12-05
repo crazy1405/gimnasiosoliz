@@ -1,0 +1,76 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+<h:head></h:head>
+<h:body>
+<ui:composition
+	template="/WEB-INF/facelets/templates/plantillaGeneral.xhtml">
+
+	<ui:define name="cuerpo">
+	
+	<h:form>
+		<p:panel id="panel1">
+			
+			<p:panelGrid>
+			<center><h:outputLabel value="Ingresar Producto" />
+			</center>
+				<p:row>
+					<p:column>Numero</p:column>
+					<p:column>
+						<p:inputText value="#{productoController.producto.cat_id}"></p:inputText>
+					</p:column>
+				</p:row>
+				<p:row>
+					<p:column>Nombre</p:column>
+					<p:column>
+						<p:inputText value="#{productoController.producto.nombre}"></p:inputText>
+					</p:column>
+				</p:row>
+				
+				<p:row>
+					<p:column>Precio</p:column>
+					<p:column>
+						<p:inputText value="#{productoController.producto.precio}"></p:inputText>
+					</p:column>
+				</p:row>
+				
+				<p:row>
+					<p:column>Stock</p:column>
+					<p:column>
+						<p:inputText value="#{productoController.producto.stock}"></p:inputText>
+					</p:column>
+				</p:row>
+				
+				<p:row>
+					<p:column>Categoria</p:column>
+					<p:column>
+						 <p:inputText value="#{productoController.producto.cat_id}"></p:inputText>
+					</p:column>
+					
+					</p:row>
+				
+				<p:row>
+					<p:column>
+						<p:commandButton value="Guardar Producto" action="#{productoController.guardarProducto()}"></p:commandButton>
+					</p:column>
+					
+					<p:column>
+							<p:commandButton value="Listar Producto" action="listar-productos" immediate="true"></p:commandButton>
+					</p:column>
+					
+				</p:row>
+				
+					
+				
+			</p:panelGrid>
+			
+		</p:panel>
+		</h:form>
+	</ui:define>
+
+</ui:composition>
+</h:body>
+</html>
