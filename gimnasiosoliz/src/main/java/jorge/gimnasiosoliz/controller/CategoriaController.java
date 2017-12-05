@@ -15,6 +15,10 @@ import jorge.gimnasiosoliz.data.CategoriaDAO;
 import jorge.gimnasiosoliz.model.Categoria;
 
 @ManagedBean
+/**
+ * Clase que permite crear los objetos para llegar a la base de datos y persistir
+ * Categoria
+ * */
 public class CategoriaController implements Serializable
 {
 	/**
@@ -22,20 +26,31 @@ public class CategoriaController implements Serializable
 	 */
 	private static final long serialVersionUID = 1L;
 
+	/**
+	 * Objeto que representa la categoria
+	 * */
 	private Categoria categoria;
-	
+	/**
+	 * Contiene el listado de categorias
+	 * */
 	private List<Categoria> categorias;
 	
 	@Inject
 	private CategoriaDAO categoriaDAO;
 	
+	/**
+	 * Sirve para el paso del parámetro para editar, es el id de la categoria
+	 * */
 	private int id;
 	
 	@Inject
     private FacesContext facesContext;
 	
 	
-	
+	/**
+	 * Inicial el objeto categoria
+	 * y llena el listado de categorias
+	 * */
 	@PostConstruct
 	public void init()
 	{
@@ -81,15 +96,30 @@ public class CategoriaController implements Serializable
 		this.categorias = categorias;
 	}
 
-	//Placeholder
+	/**Placeholder
+	 * 
+	 * Permite obtener el listado de las categorias guardadas en la DB
+	 * 
+	 * 
+	 * */
 	private void loadCategorias()
 	{
+		/**
+		 * Hace que el listado de categorias se llene con el listado desde el DAO
+		 * */
 		categorias = categoriaDAO.listadoCategorias();
 	}
 	
-	//ActionController
+	/**
+	 * Action Controller que permite setear los datos para editar la categoria en otra pagina
+	 * en base al id
+	 * 
+	 * */
 	public String loadDatosEditar(int id)
 	{
+		/*
+		 * Recibe el objeto devuelto por el metodo leer del DAO
+		 * */
 		this.categoria = categoriaDAO.leer(id);
 		System.out.println("\n\n");
 		System.out.println("LoadDatosEditar");
