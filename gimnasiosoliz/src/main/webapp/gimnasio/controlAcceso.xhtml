@@ -19,7 +19,7 @@
 				<p:menuitem value="Ver Ficha" action="#{gimnasioCtrl.doIrFichaSocio}">
 					<f:param name="keyRecupera" />
 				</p:menuitem>
-				<p:menuitem value="Listar Socios" oncomplete="PF('sociosLst').show();"></p:menuitem>
+				<p:menuitem value="Listar Socios" onclick="PF('listadoPersonas').show();"></p:menuitem>
 	        </p:submenu>
 	        
 	         <p:submenu label="Actividades" icon="fa fa-soccer-ball-o">
@@ -49,7 +49,7 @@
         		CONTROL DE INGRESO
     	</f:facet>
     	<p:password value="#{controlAccesoController.cedulaBusqueda}" />
-    	<p:commandButton value="buscar" action="#{controlAccesoController.controlAcceso()}" id="buscar" ></p:commandButton>
+    	<p:commandButton value="buscar" action="#{controlAccesoController.controlAcceso()}" id="buscar" update="panelInfoSocio"></p:commandButton>
     	<p:clock pattern="HH:mm:ss dd-MM-yyyy" mode="server" />
 		<p:panelGrid id="panelInfoSocio" columns="3"  border="1" style="margin: 0 auto;">
 			
@@ -163,11 +163,8 @@
 			</p:commandButton>
 			
 		</p:column>
-		
-		
 		</p:row>
 		<p:row>
-			
 			<p:column colspan="3">
 			
 				<p:media value="/resources/demo/images/video/e1.mp4" width="400" height="400" player="quicktime">
@@ -178,22 +175,49 @@
 			<p:column colspan="3">
 				<p:graphicImage id="imageReto" name="demo/images/sistema/esm.jpg" width="500"></p:graphicImage>
 			</p:column>
-		</p:row>
-		
-		
-		
-	
-		
-        	
-      	
+		</p:row>    	
 		</p:panelGrid>
 		</p:panel>
-	</ui:define>
-	<ui:define name="listas">
+		
+<p:dialog id="dlgListadoPersonas" widgetVar="listadoPersonas"
+	header="LISTADO DE SOCIOS" modal="true"
+	height="500" width="1200">
+	<h:form>
+		<p:panel>
+   	<p:panelGrid>
+   		<p:row>
+   			<p:column>Cedula</p:column>
+   			<p:column>
+   				<p:inputText value="#{personaController.cedula}"></p:inputText>
+   			</p:column>
+			<p:column>
+				<p:commandButton value="Mostrar" action="#{personaController.buscarPersonaCedula()}" update="tblClientes"></p:commandButton>
+			</p:column>
+		</p:row>
+   	</p:panelGrid>
+    	<p:dataTable var="cliente" value="#{personaController.clientes}" id="tblClientes">
+						    <p:column headerText="Id">
+						        <h:outputText value="#{cliente.cedula}" />
+						    </p:column>
+						    <p:column headerText="Nombre">
+						        <h:outputText value="#{cliente.nombre}" />
+						    </p:column>
+						    <p:column headerText="Apellido">
+						        <h:outputText value="#{cliente.apellido}" />
+						    </p:column>
+						    <p:column headerText="Email">
+						        <h:outputText value="#{cliente.email}" />
+						    </p:column>
+						    <p:column headerText="Telefono">
+						        <h:outputText value="#{cliente.telefono}" />
+						    </p:column>
+			 
+					    
+		</p:dataTable>			
+	</p:panel>
+	</h:form>
+</p:dialog>
+</ui:define>
 	
-		<gimnasio:sociosLst nombre="sociosLst" />
-		<gimnasio:cobrar nombre="cobrar"/>
-		<gimnasio:deuda nombre="deuda" />
-	</ui:define>
 </ui:composition>
 </html>

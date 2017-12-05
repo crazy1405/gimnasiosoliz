@@ -1,0 +1,194 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+	
+
+<ui:composition
+	template="/WEB-INF/facelets/templates/plantillaGeneral.xhtml">
+
+	<ui:define name="cuerpo">
+	
+	
+		<p:panel id="panel1">
+		<f:facet name="header">
+        		REGISTAR CLIENTES
+    		</f:facet>
+    		<p:panelGrid columns="3" border="1" style="margin: 0 auto;"  id="panelGrip1">
+    		  <!-- <p:photoCam widgetVar="pc" listener="#{camaraWeb.oncapture}"  update="photo"/>  -->
+			<p:panelGrid>
+				<p:row>
+					<p:column></p:column>
+					<p:column>
+						<b><h:outputText value="Cédula"></h:outputText></b>
+					</p:column>
+					<p:column>
+						<p:inputText id="cedula" value="#{personaController.cliente.cedula}"></p:inputText>
+					</p:column>
+					<p:growl id="growlValidarCedula" showDetail="true" sticky="true" />
+					<p:column>
+						<p:commandButton value="validar" actionListener="#{personaController.validarCedula(personaController.cliente.cedula)}" update="mensajes"></p:commandButton>
+					</p:column>
+				</p:row>
+				<p:row>
+					<p:column></p:column>
+					<p:column>
+						<b><h:outputText value="Nombre"></h:outputText></b>
+					</p:column>
+					<p:column>
+						<p:inputText value="#{personaController.cliente.nombre}"></p:inputText>
+					</p:column>
+					
+				</p:row>
+				<p:row>
+					<p:column></p:column>
+					<p:column>
+						<b><h:outputText value="Apellido"></h:outputText></b>
+					</p:column>
+					<p:column>
+						<p:inputText value="#{personaController.cliente.apellido}"></p:inputText>
+					</p:column>
+				</p:row>
+				<p:row>
+					<p:column></p:column>
+					<p:column>
+						<b><h:outputText value="Dirección"></h:outputText></b>
+					</p:column>
+					<p:column>
+						<p:inputText value="#{personaController.cliente.direccion}"></p:inputText>
+					</p:column>
+				</p:row>
+				<p:row>
+					<p:column></p:column>
+					<p:column><b>Telefonos</b></p:column>
+					<p:column>
+						<p:commandButton type="button" value="Añadir" onclick="PF('dlgTelefonos').show();"></p:commandButton>
+					</p:column>
+				</p:row>
+					
+				<p:row>
+					<p:column></p:column>
+					<p:column>
+						<b><h:outputText value="Email"></h:outputText></b>
+					</p:column>
+					<p:column>
+						<p:inputText value="#{personaController.cliente.email}"></p:inputText>
+					</p:column>
+				</p:row>	
+				<p:row>
+					
+					<p:column></p:column>
+					<p:column >
+						<b><p:outputLabel for="sexo" value="Sexo" /></b>
+				       
+					</p:column>
+					<p:column>
+						 <p:selectOneMenu id="sexo"  style="width:125px" value="#{personaController.cliente.sexo}">
+				            <f:selectItem itemLabel="Masculino" itemValue="M" />
+				            <f:selectItem itemLabel="Femenino" itemValue="F" />
+				        </p:selectOneMenu>
+					</p:column>
+					
+				</p:row>	
+				<p:row>
+					<p:column></p:column>
+					<p:column>
+						<b><h:outputText value="Fecha Nacimiento"></h:outputText></b>
+					</p:column>
+					<p:column>
+						<p:calendar id="fechaInicio"
+									value="#{personaController.cliente.fechaNacimiento}"
+									 mask="true"
+									styleClass="sigmaFecha" navigator="true" />
+					</p:column>
+				</p:row>
+				<p:row>
+					<p:column></p:column>
+					<p:column>
+						<b><h:outputText value="Peso"></h:outputText></b>
+					</p:column>
+					<p:column>
+						<p:inputText value="#{personaController.cliente.peso}"></p:inputText>
+					</p:column>
+					<p:column>
+						<b>LIBRAS</b>
+					</p:column>
+				</p:row>
+				<p:row>
+					<p:column></p:column>
+					<p:column>
+						<b><h:outputText value="Estatura"></h:outputText></b>
+					</p:column>
+					<p:column>
+						<p:inputText value="#{personaController.cliente.estatura}"></p:inputText>
+					</p:column>
+					<p:column>
+						<b>cm</b>
+					</p:column>
+				</p:row>	
+				
+				<p:row>
+					<p:column></p:column>
+					<p:column colspan="2">
+						<b><h:outputText value="Observaciones"></h:outputText></b>
+					</p:column>
+					
+				</p:row>
+				
+				<p:row>
+					<p:column></p:column>
+					<p:column colspan="2">
+						<h:inputTextarea value="#{personaController.cliente.observaciones}"></h:inputTextarea>
+					</p:column>
+					
+				</p:row>	
+				
+				<p:row>
+					<p:column colspan="2"></p:column>
+					<p:growl id="growl" showDetail="true" sticky="true" />  
+					<p:column>
+						<p:commandButton value="Guardar" action="#{personaController.guardarPersona()}" update="mensajes"></p:commandButton>
+					</p:column>
+					
+				</p:row>
+			</p:panelGrid>
+		<p:outputPanel id="photo">
+              <p:graphicImage /> 
+            
+        </p:outputPanel>
+         <!--  <p:commandButton type="button" title="Capturar" value="Tomar" onclick="PF('pc').capture()" icon="fa fa-camera-retro">
+       		
+         </p:commandButton>-->		
+		</p:panelGrid>			
+			<h:commandButton action="controlAcceso" value="regresar" />
+		</p:panel>
+<p:dialog widgetVar="dlgTelefonos" header="TELEFONOS" modal="true" height="500" width="900">
+		<h:form>
+			<p:panel>
+	    			<p:commandButton action="#{personaController.addTelefono()}" value="+ Telefono" immediate="true" update="tblTelefonos" >
+						<f:ajax render="tblTelefonos" execute="@all"></f:ajax>
+					</p:commandButton>
+			
+					<p:dataTable value="#{personaController.cliente.telefonos}" var="telefono" id="tblTelefonos" styleClass="sigmaTablaSinEspacio">
+						<p:column headerText="Código">
+							<h:inputText value="#{telefono.codigo}" />
+						</p:column>
+						
+						<p:column headerText="Numero Telefono">
+							<h:inputText value="#{telefono.numero}" />
+						</p:column>
+						<p:column headerText="Tipo">
+							<h:inputText value="#{telefono.tipo}" />
+						</p:column>
+					</p:dataTable>
+			</p:panel>
+		</h:form>
+</p:dialog>
+	</ui:define>
+
+
+
+</ui:composition>
+</html>

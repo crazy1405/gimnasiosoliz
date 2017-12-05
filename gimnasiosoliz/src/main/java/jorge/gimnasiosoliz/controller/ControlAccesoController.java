@@ -1,5 +1,7 @@
 package jorge.gimnasiosoliz.controller;
 
+import java.util.ArrayList;
+
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.inject.Inject;
@@ -24,8 +26,9 @@ public class ControlAccesoController {
 	
 	//Valores que aparecen en la vista control de acceso
 	public String controlAcceso() {
+		System.out.println("Buscando Cliente");
 		cliente = clienteDAO.leer(cedulaBusqueda);
-		
+		indicePesoCorporal(cliente);
 		return null;
 	}
 	
@@ -56,6 +59,7 @@ public class ControlAccesoController {
 			advertenciaPeso = "PELIGRO OBESIDAD EXTREMA";
 		}
 	}
+	
 	
 	public String getCedulaBusqueda() {
 		return cedulaBusqueda;

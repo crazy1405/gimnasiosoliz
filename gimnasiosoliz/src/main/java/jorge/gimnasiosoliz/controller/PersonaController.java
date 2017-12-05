@@ -1,5 +1,6 @@
 package jorge.gimnasiosoliz.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -21,6 +22,7 @@ public class PersonaController
 	private Cliente cliente;
 	private List<Cliente> clientes;
 	private ValidarCedula validarCedula;
+	private String cedula;
 	
 	@Inject
 	private ClienteDAO clienteDAO;
@@ -35,6 +37,14 @@ public class PersonaController
 		validarCedula = new ValidarCedula();
 		cliente.addTelefono(new Telefono());
 		loadPersonas();
+	}
+	
+	public String buscarPersonaCedula() {
+		System.out.println("Buscando persona");
+		cliente = clienteDAO.leer(cedula);
+		clientes = new ArrayList<Cliente>();
+		clientes.add(cliente);
+		return null;
 	}
 	
 	public String guardarPersona()
@@ -127,5 +137,14 @@ public class PersonaController
 		this.clientes = clientes;
 	}
 
+	public String getCedula() {
+		return cedula;
+	}
+
+	public void setCedula(String cedula) {
+		this.cedula = cedula;
+	}
+
+	
 	
 }

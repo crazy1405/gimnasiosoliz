@@ -19,23 +19,16 @@
 			<p:panel>
     	<p:panelGrid>
     		<p:row>
-    			<p:column>Nombre</p:column>
-    			<p:column>
-    				<p:inputText >
-    					
-    				</p:inputText>
-    			</p:column>
-    			
     			<p:column>Cedula</p:column>
     			<p:column>
-    				<p:inputText ></p:inputText>
+    				<p:inputText value="#{personaController.cedula}"></p:inputText>
     			</p:column>
 				<p:column>
-					<p:commandButton value="Mostrar" ></p:commandButton>
+					<p:commandButton value="Mostrar" update="@form"></p:commandButton>
 				</p:column>
 			</p:row>
     	</p:panelGrid>
-	    	<p:dataTable var="cliente" value="#{personaController.clientes}">
+	    	<p:dataTable var="cliente" value="#{personaController.clientes}" id="tblClientes">
 							    <p:column headerText="Id">
 							        <h:outputText value="#{cliente.cedula}" />
 							    </p:column>
