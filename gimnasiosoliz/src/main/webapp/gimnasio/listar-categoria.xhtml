@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+	
+
+<ui:composition
+	template="/WEB-INF/facelets/templates/plantillaGeneral.xhtml">
+
+	<ui:define name="cuerpo">
+		<center>
+			<h3>Categoría</h3>
+		</center>	
+	
+		<p:panel id="panel1">
+			<h:panelGrid columns="2" cellpadding="10">
+	            	<h:form> 
+	            		<h:outputText value="No existen registros" 
+	            		rendered="#{empty categoriaController.categorias}"/>
+	            		
+	            		<p:dataTable value="#{categoriaController.categorias}" var="categoria"
+	            			rendered="#{not empty categoriaController.categorias}">
+	            			
+	            			<p:column headerText="ID">
+	            				<h:outputText value="#{categoria.id}" />
+	            			</p:column>
+	            			
+	            			<p:column headerText="NOMBRE">
+									<h:outputText value="#{categoria.nombre}"/>
+							</p:column>
+							
+							<p:column headerText="DESCRIPCION">
+									<h:outputText value="#{categoria.descripcion}"/>
+							</p:column>
+														
+							<p:column headerText="ACCIONES">
+									<a href="modificar-categoria.jsf?id=#{categoria.id}">Editar #{categoria.id}</a>
+									<p:commandButton action="#{categoriaController.eliminar(categoria.id)}" value="Borrar #{categoria.id}" immediate="true"/>	
+							</p:column>
+								
+						</p:dataTable>
+							
+							<p:commandButton action="ingresar-categoria" value="Crear Categoria"/>
+						</h:form>
+	            </h:panelGrid>
+		</p:panel>
+		
+	</ui:define>
+
+
+
+</ui:composition>
+</html>

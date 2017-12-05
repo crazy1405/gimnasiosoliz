@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+	
+
+<ui:composition
+	template="/WEB-INF/facelets/templates/plantillaGeneral.xhtml">
+
+	<ui:define name="cuerpo">
+		<center>
+			<h3>Listado de Productos</h3>
+		</center>	
+	
+		<p:panel id="panel1">
+			<h:panelGrid columns="2" cellpadding="10">
+	            	<h:form> 
+	            		<h:outputText value="No existen registros" 
+	            		rendered="#{empty productoController.productos}"/>
+	            		
+	            		<p:dataTable value="#{productoController.productos}" var="producto"
+	            			rendered="#{not empty productoController.productos}">
+	            			
+	            			<p:column headerText="ID">
+	            				<h:outputText value="#{producto.pro_id}" />
+	            			</p:column>
+	            			
+	            			<p:column headerText="NOMBRE">
+									<h:outputText value="#{producto.nombre}"/>
+							</p:column>
+	            			
+	            			<p:column headerText="PRECIO">
+									<h:outputText value="#{producto.precio}"/>
+							</p:column>
+							
+							<p:column headerText="STOCK">
+									<h:outputText value="#{producto.stock}"/>
+							</p:column>
+														
+							<p:column headerText="CATEGORIA">
+								<h:outputText value="#{producto.cat_id}"/>
+							</p:column>
+							
+							<p:column headerText="Opciones">
+								<a href="modificar-producto.jsf?nombre=#{producto.nombre}">Editar  #{producto.nombre}</a>
+									<p:commandButton action="#{productoController.eliminar(producto.nombre)}" value="Borrar #{producto.pro_id}" immediate="true"/>	
+							</p:column>
+						</p:dataTable>
+							
+							<p:commandButton action="ingresar-producto" value="Crear Producto"/>
+						</h:form>
+	            </h:panelGrid>
+		</p:panel>
+		
+	</ui:define>
+
+
+
+</ui:composition>
+</html>

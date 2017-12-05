@@ -1,0 +1,81 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+	
+<h:head>
+
+</h:head> 
+		<f:metadata>  
+   			<f:viewParam name="id" value="#{categoriaController.id}"/>
+		</f:metadata> 
+
+
+<ui:composition
+	template="/WEB-INF/facelets/templates/plantillaGeneral.xhtml">
+
+	<ui:define name="cuerpo">
+		<center>
+			<h2>Modificar Categoría</h2>
+		</center>
+		
+
+		
+		<p:outputLabel value="#{categoriaController.categoria.id}"></p:outputLabel>
+		<p:outputLabel id ="ou" value="#{categoriaController.id}"></p:outputLabel>
+		<br />
+		
+		<h:messages globalOnly="true"/>
+
+		<p:messages globalOnly="true"></p:messages>
+		
+			
+		<h:inputHidden id ="idd" value="#{categoriaController.id}"/>
+		     
+	
+		<p:panel id="panel1">
+			<p:panelGrid columns="3" layout="grid">
+					<p:row>
+						<p:column>Id</p:column>
+						<p:column>
+							<p:inputText value="#{categoriaController.categoria.id}"></p:inputText>
+						</p:column>
+					</p:row>
+					<p:row>
+						<p:column>Nombre Categoría</p:column>
+						<p:column>
+							<p:inputText value="#{categoriaController.categoria.nombre}"></p:inputText>
+						</p:column>
+					</p:row>
+					
+					<p:row>
+						<p:column>Descripción</p:column>
+						<p:column>
+							<p:inputText value="#{categoriaController.categoria.descripcion}"></p:inputText>
+						</p:column>
+					</p:row>					
+				</p:panelGrid>
+				
+				<p:panelGrid columns="2" layout="grid">
+					<p:row>
+						<p:column>
+							<p:commandButton value="Actualizar Categoría" action="#{categoriaController.guardar2()}"></p:commandButton>
+						</p:column>
+					</p:row>
+					
+					<p:row>
+						<p:column>
+							<p:commandButton value="Listar Categoría" action="listar-categoria" immediate="true"></p:commandButton>
+						</p:column>
+					</p:row>
+				
+				</p:panelGrid>
+					
+		</p:panel>
+		
+	</ui:define>
+
+</ui:composition>
+</html>
