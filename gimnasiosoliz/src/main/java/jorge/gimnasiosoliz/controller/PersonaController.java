@@ -3,8 +3,10 @@ package jorge.gimnasiosoliz.controller;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 
 import jorge.gimnasiosoliz.data.ClienteDAO;
@@ -23,6 +25,9 @@ public class PersonaController
 	@Inject
 	private ClienteDAO clienteDAO;
 	
+	@Inject
+	private FacesContext facesContext;
+	
 	@PostConstruct
 	public void init()
 	{
@@ -36,8 +41,19 @@ public class PersonaController
 	{
 		System.out.println("Guardando persona");
 		System.out.println(cliente);
-		clienteDAO.insertar(cliente);
-		
+		try
+		{
+			clienteDAO.guardarPersona(cliente);
+			loadPersonas();
+		}
+		catch (Exception e)
+		{
+			String errorMessage = getRootErrorMessage(e);
+            FacesMessage m = new FacesMessage(FacesMessage.SEVERITY_ERROR, errorMessage, "Error al registrar");
+            //facesContext es la parte de la vista
+            facesContext.addMessage(null, m);
+            return null;
+		}
 		return null;
 	}
 	
@@ -46,6 +62,25 @@ public class PersonaController
 		clientes = clienteDAO.listaClientes();
 		
 	}
+	
+	private String getRootErrorMessage(Exception e) {
+        // Default to general error message that registration failed.
+        String errorMessage = "Registration failed. See server log for more information";
+        if (e == null) {
+            // This shouldn't happen, but return the default messages
+            return errorMessage;
+        }
+
+        // Start with the exception and recurse to find the root cause
+        Throwable t = e;
+        while (t != null) {
+            // Get the message from the Throwable class instance
+            errorMessage = t.getLocalizedMessage();
+            t = t.getCause();
+        }
+        // This is the root cause message
+        return errorMessage;
+    }
 	
 	public String actualizarPersona() {
 		

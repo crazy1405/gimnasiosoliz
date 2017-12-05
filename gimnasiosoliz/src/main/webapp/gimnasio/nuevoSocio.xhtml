@@ -86,7 +86,6 @@
 					</p:column>
 					<p:column>
 						 <p:selectOneMenu id="sexo"  style="width:125px" value="#{personaController.cliente.sexo}">
-				            
 				            <f:selectItem itemLabel="Masculino" itemValue="M" />
 				            <f:selectItem itemLabel="Femenino" itemValue="F" />
 				        </p:selectOneMenu>
@@ -163,7 +162,7 @@
        		
          </p:commandButton>-->		
 		</p:panelGrid>			
-			<h:commandButton action="lectorBarra" value="regresar" />
+			<h:commandButton action="controlAcceso" value="regresar" />
 		</p:panel>
 <p:dialog widgetVar="dlgTelefonos" header="TELEFONOS" modal="true" height="500" width="900">
 		<h:form>

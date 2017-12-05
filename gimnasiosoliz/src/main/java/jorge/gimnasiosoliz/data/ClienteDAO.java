@@ -48,9 +48,9 @@ public class ClienteDAO
 		return listado;
 	}
 	
-	public void guardarPersona(String cedula) {
-		Cliente cliente = leer(cedula);
-		if(cliente == null) {
+	public void guardarPersona(Cliente cliente) {
+		Cliente c= leer(cliente.getCedula());
+		if(c == null) {
 			insertar(cliente);
 		}
 		else {
