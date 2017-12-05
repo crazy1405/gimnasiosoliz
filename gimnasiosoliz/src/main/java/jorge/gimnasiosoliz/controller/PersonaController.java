@@ -39,6 +39,7 @@ public class PersonaController
 		loadPersonas();
 	}
 	
+	//Verifica si la cédula es correcta
 	public String buscarPersonaCedula() {
 		System.out.println("Buscando persona");
 		cliente = clienteDAO.leer(cedula);
@@ -47,6 +48,7 @@ public class PersonaController
 		return null;
 	}
 	
+	//guarda una nueva persona o actualiza si ya existe
 	public String guardarPersona()
 	{
 		System.out.println("Guardando persona");
@@ -67,6 +69,7 @@ public class PersonaController
 		return null;
 	}
 	
+	//carga las personas en una tabla.
 	private void loadPersonas()
 	{
 		clientes = clienteDAO.listaClientes();
