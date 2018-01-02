@@ -1,9 +1,13 @@
 package jorge.gimnasiosoliz.data;
 
+import java.util.List;
+
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 
+import jorge.gimnasiosoliz.model.Cliente;
 import jorge.gimnasiosoliz.model.Login;
 
 @Stateless
@@ -22,15 +26,46 @@ public class LoginDAO
 		em.merge(login);
 	}
 	
-	public Login leer(String login_usr_name)
+	public Login leer(Integer id)
 	{
-		em.find(Login.class, login_usr_name);
+		em.find(Login.class, id);
 		return null;
 	}
 	
-	public void borrar(String login_usr_name)
+	public void borrar(Integer id)
 	{
-		em.remove(leer(login_usr_name));
+		em.remove(leer(id));
+	}
+	
+	public void guardar() {
+		
+	}
+	
+	public List<Login> listaLogin(){
+		String jpql = "SELECT l FROM Login l";
+		Query query = em.createQuery(jpql,Login.class);
+		List<Login> listado = query.getResultList();
+		return listado;
+	}
+	
+	public void guardarLogin(Login login) {
+		Login l= leer(login.getId());
+		if(l == null) {
+			insertar(l);
+		}
+		else {
+			actualizar(l);
+		}
+	}
+	
+	public void eliminar(Login login) {
+		Login l = leer(login.getId());
+		if(l == null) {
+			borrar(login.getId());
+		}else {
+			System.err.println("No existe login");
+		}
+		
 	}
 	
 }

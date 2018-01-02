@@ -23,16 +23,25 @@ public class LoginController
 	public Login getLogin() {
 		return login;
 	}
-
+	
 	public void setLogin(Login login) {
 		this.login = login;
 	}
 	
-	public void guardarLogin()
+	public String guardarLogin()
 	{
 		System.out.println(login);
 		//InjectarDAO
-		loginDAO.insertar(login);
+		loginDAO.guardarLogin(login);
+		
+		return null;
+	}
+	
+	public String eliminarLogin() {
+		System.out.println(login);
+		
+		
+		return null;
 	}
 	
 }
