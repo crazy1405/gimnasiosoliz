@@ -37,6 +37,10 @@ public class FacturaController
 		facturaDAO.insertar(factura);
 	}
 	
+	public void modificacionFactura() {
+		
+	}
+	
 	
 	
 }
