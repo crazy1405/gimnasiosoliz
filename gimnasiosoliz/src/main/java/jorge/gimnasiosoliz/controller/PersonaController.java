@@ -13,6 +13,7 @@ import javax.inject.Inject;
 
 import jorge.gimnasiosoliz.data.ClienteDAO;
 import jorge.gimnasiosoliz.model.Cliente;
+import jorge.gimnasiosoliz.model.InscripcionCliente;
 import jorge.gimnasiosoliz.model.Telefono;
 import jorge.gimnasiosoliz.util.Bean;
 import jorge.gimnasiosoliz.util.ValidarCedula;
@@ -38,6 +39,7 @@ public class PersonaController
 		cliente = new Cliente();
 		validarCedula = new ValidarCedula();
 		cliente.addTelefono(new Telefono());
+		//cliente.addInscripcionCliente(new InscripcionCliente());
 		loadPersonas();
 	}
 	
@@ -113,6 +115,12 @@ public class PersonaController
 		System.out.println("Agregando Telefono");
 		cliente.addTelefono(new Telefono());
 		
+		return null;
+	}
+	
+	public String addInscripcionCliente() {
+		System.out.println("Agregando Inscripcion");
+		//cliente.addInscripcionCliente(new InscripcionCliente());
 		return null;
 	}
 	

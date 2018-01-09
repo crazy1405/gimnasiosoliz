@@ -14,6 +14,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.ws.rs.ext.ParamConverter.Lazy;
 
 @Entity
 @Table(name="cliente")
@@ -46,9 +47,21 @@ public class Cliente extends Persona implements Serializable{
 	
 	/*@OneToOne(fetch=FetchType.LAZY, mappedBy="cliente")
 	private Persona persona;*/
+	@OneToMany(cascade= {CascadeType.ALL})
+	@JoinColumn(name="persona", referencedColumnName="per_cedula")
+	private List<InscripcionCliente> inscripcionClientes;
+	
 	@OneToMany(cascade= {CascadeType.ALL}, fetch=FetchType.EAGER)
-	@JoinColumn(name="cliente", referencedColumnName="per_cedula")
+	@JoinColumn(name="persona", referencedColumnName="per_cedula")
 	private List<Telefono> telefonos;
+	
+	/*public void addInscripcionCliente(InscripcionCliente inscripcionCliente) {
+		if(inscripcionClientes==null) {
+			inscripcionClientes = new ArrayList<>();
+		}
+		inscripcionClientes.add(inscripcionCliente);
+		
+	}*/
 
 	public void addTelefono(Telefono telefono) {
 		if(telefonos==null) {
@@ -95,7 +108,7 @@ public class Cliente extends Persona implements Serializable{
 		this.telefonos = telefonos;
 	}
 
-
+	
 	@Override
 	public String toString() {
 		return "Cliente [peso=" + peso + ", estatura=" + estatura + ", observaciones=" + observaciones + ", telefonos="
