@@ -4,7 +4,6 @@
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:p="http://primefaces.org/ui">
-	
 
 <ui:composition
 	template="/WEB-INF/facelets/templates/plantillaGeneral.xhtml">
@@ -14,7 +13,7 @@
 	
 		<p:panel id="panel1">
 		<f:facet name="header">
-        		REGISTAR CLIENTES
+        		EDITAR CLIENTE
     		</f:facet>
     		<p:panelGrid columns="3" border="1" style="margin: 0 auto;"  id="panelGrip1">
     		  <!-- <p:photoCam widgetVar="pc" listener="#{camaraWeb.oncapture}"  update="photo"/>  -->
@@ -162,7 +161,7 @@
        		
          </p:commandButton>-->		
 		</p:panelGrid>			
-			<h:commandButton action="controlAcceso" value="regresar" />
+			<h:commandButton action="controlAcceso" value="regresar" immediate="true" />
 		</p:panel>
 <p:dialog widgetVar="dlgTelefonos" header="TELEFONOS" modal="true" height="500" width="900">
 		<h:form>

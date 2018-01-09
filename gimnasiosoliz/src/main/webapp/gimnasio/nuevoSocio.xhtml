@@ -29,7 +29,7 @@
 					</p:column>
 					<p:growl id="growlValidarCedula" showDetail="true" sticky="true" />
 					<p:column>
-						<p:commandButton value="validar" actionListener="#{personaController.validarCedula(personaController.cliente.cedula)}" update="mensajes"></p:commandButton>
+						<p:commandButton value="validar" actionListener="#{pagina.doIrControlAcceso()}" update="mensajes" ></p:commandButton>
 					</p:column>
 				</p:row>
 				<p:row>
@@ -160,32 +160,33 @@
         </p:outputPanel>
          <!--  <p:commandButton type="button" title="Capturar" value="Tomar" onclick="PF('pc').capture()" icon="fa fa-camera-retro">
        		
-         </p:commandButton>-->		
+         </p:commandButton>-->
+         <p:commandButton action="#{pagina.doIrControlAcceso()}" value="regresar" immediate="true"/>		
 		</p:panelGrid>			
-			<h:commandButton action="controlAcceso" value="regresar" />
-		</p:panel>
-<p:dialog widgetVar="dlgTelefonos" header="TELEFONOS" modal="true" height="500" width="900">
-		<h:form>
-			<p:panel>
-	    			<p:commandButton action="#{personaController.addTelefono()}" value="+ Telefono" immediate="true" update="tblTelefonos" >
-						<f:ajax render="tblTelefonos" execute="@all"></f:ajax>
-					</p:commandButton>
 			
-					<p:dataTable value="#{personaController.cliente.telefonos}" var="telefono" id="tblTelefonos" styleClass="sigmaTablaSinEspacio">
-						<p:column headerText="Código">
-							<h:inputText value="#{telefono.codigo}" />
-						</p:column>
-						
-						<p:column headerText="Numero Telefono">
-							<h:inputText value="#{telefono.numero}" />
-						</p:column>
-						<p:column headerText="Tipo">
-							<h:inputText value="#{telefono.tipo}" />
-						</p:column>
-					</p:dataTable>
-			</p:panel>
-		</h:form>
-</p:dialog>
+		</p:panel>
+		<p:dialog widgetVar="dlgTelefonos" header="TELEFONOS" modal="true" height="500" width="900">
+				<h:form>
+					<p:panel>
+			    			<p:commandButton action="#{personaController.addTelefono()}" value="+ Telefono" immediate="true" update="tblTelefonos" >
+								<f:ajax render="tblTelefonos" execute="@all"></f:ajax>
+							</p:commandButton>
+					
+							<p:dataTable value="#{personaController.cliente.telefonos}" var="telefono" id="tblTelefonos" styleClass="sigmaTablaSinEspacio">
+								<p:column headerText="Código">
+									<h:inputText value="#{telefono.codigo}" />
+								</p:column>
+								
+								<p:column headerText="Numero Telefono">
+									<h:inputText value="#{telefono.numero}" />
+								</p:column>
+								<p:column headerText="Tipo">
+									<h:inputText value="#{telefono.tipo}" />
+								</p:column>
+							</p:dataTable>
+					</p:panel>
+				</h:form>
+		</p:dialog>
 	</ui:define>
 
 

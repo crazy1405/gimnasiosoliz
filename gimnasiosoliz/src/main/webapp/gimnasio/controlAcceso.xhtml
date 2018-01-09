@@ -148,9 +148,10 @@
 		</p:column>
 		
 		 <p:column>
-			<p:commandButton icon="fa fa-edit"  title="Editar" action="#{personaController.actualizarPersona()}">
-				<f:param name="keyRecupera"  value="#{controlAccesoController.cliente.cedula}"/>
+			<p:commandButton icon="fa fa-edit"  title="Editar" action="#{personaController.loadPersonaEditar()}">
+				<f:param name="keyRecupera" value="#{controlAccesoController.cedulaBusqueda}" />
 			</p:commandButton>
+			
 		</p:column>
 		<p:column>
 			<p:commandButton icon="fa fa-fax" title="Ficha" >
@@ -165,13 +166,7 @@
 		</p:column>
 		</p:row>
 		<p:row>
-			<p:column colspan="3">
 			
-				<p:media value="/resources/demo/images/video/e1.mp4" width="400" height="400" player="quicktime">
-					 <f:param name="autoplay" value="false" ></f:param> 
-				</p:media>
-		
-			</p:column>
 			<p:column colspan="3">
 				<p:graphicImage id="imageReto" name="demo/images/sistema/esm.jpg" width="500"></p:graphicImage>
 			</p:column>

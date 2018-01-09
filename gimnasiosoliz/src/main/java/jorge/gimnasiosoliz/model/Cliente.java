@@ -32,17 +32,17 @@ public class Cliente extends Persona implements Serializable{
 	@Column(name="cli_observac", length=300)
 	private String observaciones;
 
-	@OneToMany(mappedBy="cliente")
-	private List<PlanEjercicio> planEjercicio;
+	/*@OneToMany(mappedBy="cliente")
+	private List<PlanEjercicio> planEjercicio;*/
 	
-	@OneToMany(mappedBy="cliente")
-	private List<Factura> factura;
+	/*@OneToMany(mappedBy="cliente")
+	private List<Factura> factura;*/
 	
-	@OneToMany(mappedBy="cliente")
-	private List<InscripcionCliente> inscripcionCliente;
+	/*@OneToMany(mappedBy="cliente")
+	private List<InscripcionCliente> inscripcionCliente;*/
 	
-	@OneToMany(mappedBy="cliente")
-	private List<Dieta> dieta;
+	/*@OneToMany(mappedBy="cliente")
+	private List<Dieta> dieta;*/
 	
 	/*@OneToOne(fetch=FetchType.LAZY, mappedBy="cliente")
 	private Persona persona;*/
@@ -53,7 +53,6 @@ public class Cliente extends Persona implements Serializable{
 	public void addTelefono(Telefono telefono) {
 		if(telefonos==null) {
 			telefonos = new ArrayList<>();
-			
 		}
 		telefonos.add(telefono);
 		
@@ -64,12 +63,7 @@ public class Cliente extends Persona implements Serializable{
 		return peso;
 	}
 
-	@Override
-	public String toString() {
-		return "Cliente [peso=" + peso + ", estatura=" + estatura + ", observaciones=" + observaciones
-				+ ", planEjercicio=" + planEjercicio + ", factura=" + factura + ", inscripcionCliente="
-				+ inscripcionCliente + ", dieta=" + dieta + "]";
-	}
+	
 
 	public void setPeso(Integer peso) {
 		this.peso = peso;
@@ -83,13 +77,6 @@ public class Cliente extends Persona implements Serializable{
 		this.estatura = estatura;
 	}
 
-	public List<PlanEjercicio> getPlanEjercicio() {
-		return planEjercicio;
-	}
-
-	public void setPlanEjercicio(List<PlanEjercicio> planEjercicio) {
-		this.planEjercicio = planEjercicio;
-	}
 
 	public String getObservaciones() {
 		return observaciones;
@@ -99,31 +86,6 @@ public class Cliente extends Persona implements Serializable{
 		this.observaciones = observaciones;
 	}
 
-	public List<Factura> getFactura() {
-		return factura;
-	}
-
-	public void setFactura(List<Factura> factura) {
-		this.factura = factura;
-	}
-
-	public List<InscripcionCliente> getInscripcionCliente() {
-		return inscripcionCliente;
-	}
-
-	public void setInscripcionCliente(List<InscripcionCliente> inscripcionCliente) {
-		this.inscripcionCliente = inscripcionCliente;
-	}
-
-	public List<Dieta> getDieta() {
-		return dieta;
-	}
-
-	public void setDieta(List<Dieta> dieta) {
-		this.dieta = dieta;
-	}
-
-
 	public List<Telefono> getTelefonos() {
 		return telefonos;
 	}
@@ -131,6 +93,13 @@ public class Cliente extends Persona implements Serializable{
 
 	public void setTelefonos(List<Telefono> telefonos) {
 		this.telefonos = telefonos;
+	}
+
+
+	@Override
+	public String toString() {
+		return "Cliente [peso=" + peso + ", estatura=" + estatura + ", observaciones=" + observaciones + ", telefonos="
+				+ telefonos + "]";
 	}
 	
 	

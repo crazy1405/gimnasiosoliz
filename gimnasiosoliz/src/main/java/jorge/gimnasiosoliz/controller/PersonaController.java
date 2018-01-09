@@ -7,6 +7,7 @@ import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 
@@ -17,7 +18,7 @@ import jorge.gimnasiosoliz.util.Bean;
 import jorge.gimnasiosoliz.util.ValidarCedula;
 
 @ManagedBean
-@SessionScoped
+@ViewScoped
 public class PersonaController 
 {
 	private Cliente cliente;
@@ -52,8 +53,6 @@ public class PersonaController
 	//guarda una nueva persona o actualiza si ya existe
 	public String guardarPersona()
 	{
-		System.out.println("Guardando persona");
-		System.out.println(cliente);
 		try
 		{
 			clienteDAO.guardarPersona(cliente);
@@ -67,7 +66,7 @@ public class PersonaController
             facesContext.addMessage(null, m);
             return null;
 		}
-		return null;
+		return "controlAcceso.xhtml";
 	}
 	
 	//carga las personas en una tabla.
@@ -75,6 +74,14 @@ public class PersonaController
 	{
 		clientes = clienteDAO.listaClientes();
 		
+	}
+	
+	
+	public String loadPersonaEditar(){
+		System.out.println(Bean.getkeyRecupera());
+		cliente = clienteDAO.leer(Bean.getkeyRecupera());
+		System.out.println(cliente);
+		return "editarSocio.xhtml";
 	}
 	
 	private String getRootErrorMessage(Exception e) {

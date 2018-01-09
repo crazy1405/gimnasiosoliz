@@ -4,13 +4,14 @@ import java.util.ArrayList;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.bean.ViewScoped;
 import javax.inject.Inject;
 
 import jorge.gimnasiosoliz.data.ClienteDAO;
 import jorge.gimnasiosoliz.model.Cliente;
 
 @ManagedBean
-@SessionScoped
+@ViewScoped
 public class ControlAccesoController {
 	private String cedulaBusqueda;
 	private Cliente cliente;

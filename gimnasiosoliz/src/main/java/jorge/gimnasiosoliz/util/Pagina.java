@@ -4,7 +4,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
 @ManagedBean
-@SessionScoped
+
 //Para implementar en un boton y redireccionar a una página
 public class Pagina {
 	
@@ -18,6 +18,11 @@ public class Pagina {
 	
 	public void doIrEditarSocio() throws GimnasioException{
 		Redireccionar.redirecciona("editarSocio.jsf");		
+	}
+	
+	public void doIrControlAcceso() throws GimnasioException{
+		System.out.println("Regresando");
+		Redireccionar.redirecciona("controlAcceso.jsf");		
 	}
 	
 }
